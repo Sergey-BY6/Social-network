@@ -15,21 +15,7 @@
 
 }
 
-.header {
-    grid-area: h;
-    background-color: green;
-}
 
-.header img {
-    width: 25px;
-}
 
-.nav {
-    grid-area: n;
-    background-color: burlywood;
-}
 
-.content {
-    grid-area: c;
-    background-color: cornflowerblue;
-}
+
