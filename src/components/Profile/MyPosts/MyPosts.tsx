@@ -1,19 +1,20 @@
 import React from 'react';
+import { postsType } from '../../../Redux/state';
 import s from "./MuPosts.module.css"
 import Post from './Post/Post';
 
 
 
 
-const MyPosts = () => {
+
+type MyPostsPropsType = {
+    posts: postsType[]
+}
+
+const MyPosts: React.FC<MyPostsPropsType> = (props) => {
 
 
-    let posts = [
-        {id: 1, message: "Hi, how are you?", likesCount: 12},
-        {id: 2, message: "It's my first post", likesCount: 11},
-    ]
-
-    let postsElements = posts.map(el =>  <Post message={el.message} likesCount={el.likesCount}/>)
+    let postsElements = props.posts.map(el =>  <Post message={el.message} likesCount={el.likesCount}/>)
 
     return (
             <div className={s.postsBlock}>
