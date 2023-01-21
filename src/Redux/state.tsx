@@ -1,9 +1,9 @@
 
 
-
 export type dialogsType = {
     id: number
     name: string
+    avatar: string
 }
 
 export type messagesType = {
@@ -27,11 +27,16 @@ export type dialogsPageType = {
     messages: messagesType[]
 }
 
-export type sidebarType = {
 
+export type SidebarFriendsType = {
+    name: string
+}
+export type sidebarType = {
+    friends: SidebarFriendsType[]
 }
 
-
+const avatarMan = "https://pixelbox.ru/wp-content/uploads/2021/03/ava-instagram-49.jpg"
+const avatarWoman = "https://pixelbox.ru/wp-content/uploads/2021/02/mult-ava-instagram-58.jpg"
 
 export type RootStateType = {
     profilePage: profilePageType
@@ -49,12 +54,12 @@ let state: RootStateType  = {
     },
     dialogsPage: {
         dialogs: [
-            {id: 1, name: 'Dimych'},
-            {id: 2, name: 'Andrey'},
-            {id: 3, name: 'Sveta'},
-            {id: 4, name: 'Sasha'},
-            {id: 5, name: 'Victor'},
-            {id: 6, name: 'Valera'}
+            {id: 1, name: 'Dimych', avatar: avatarMan},
+            {id: 2, name: 'Andrey', avatar: avatarMan},
+            {id: 3, name: 'Sveta', avatar: avatarWoman},
+            {id: 4, name: 'Sasha', avatar: avatarWoman},
+            {id: 5, name: 'Victor', avatar: avatarMan},
+            {id: 6, name: 'Valera', avatar: avatarMan}
         ],
         messages: [
             {id: 1, message: 'Hi'},
@@ -64,7 +69,9 @@ let state: RootStateType  = {
             {id: 5, message: 'Yo'},
         ]
     },
-    sidebar: {}
+    sidebar: {
+        friends: [{name: "Ivan" }, {name: "Maria"}, {name: "Nastia"}],
+    }
 }
 
 export default state
