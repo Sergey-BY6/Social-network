@@ -18,6 +18,12 @@ const Dialogs: React.FC<DialogsPropsType> = (props) => {
 
     let messageElements = props.messages.map(el => <Message message={el.message}/>)
 
+    let textMessageRef = React.createRef<HTMLTextAreaElement>()
+
+    const addTextRef = () => {
+        let text = textMessageRef.current?.value
+        alert(text)
+    }
 
     return (
         <div className={s.dialogs}>
@@ -26,6 +32,12 @@ const Dialogs: React.FC<DialogsPropsType> = (props) => {
             </div>
             <div className={s.messages}>
                 {messageElements}
+                <textarea
+                    ref={textMessageRef} className={s.area}>
+                </textarea>
+                <button
+                    className={s.btnAdd}
+                    onClick={addTextRef}>Add</button>
             </div>
         </div>
 

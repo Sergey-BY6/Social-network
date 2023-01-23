@@ -37,3 +37,20 @@
 
 margin-top: 20px;
 }
+
+
+
+.btnAdd {
+    background-color: hotpink;
+    color: white;
+    width: 45px;
+    height: 22px;
+    border: 2px solid black;
+    border-radius: 3px;
+    margin: 0px 0 5px 5px;
+}
+
+
+.area {
+    margin-top: 10px;
+}
