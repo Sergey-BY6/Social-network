@@ -9,6 +9,8 @@ import Post from './Post/Post';
 
 type MyPostsPropsType = {
     posts: postsType[]
+    addPost: (postText: string) => void
+
 }
 
 const MyPosts: React.FC<MyPostsPropsType> = (props) => {
@@ -20,8 +22,11 @@ const MyPosts: React.FC<MyPostsPropsType> = (props) => {
     const postMessageRef = React.createRef<HTMLTextAreaElement>()
 
     const addPost = ()=> {
-        let text = postMessageRef.current?.value
-        alert(text)
+        if (postMessageRef.current) {
+            props.addPost(postMessageRef.current.value)
+            postMessageRef.current.value = ""
+        }
+
     }
 
     return (

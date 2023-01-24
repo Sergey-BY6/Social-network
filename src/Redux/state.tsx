@@ -1,3 +1,4 @@
+import {rerenderEntireTree} from '../rerenderEntireTree';
 
 
 export type dialogsType = {
@@ -72,6 +73,15 @@ let state: RootStateType  = {
     sidebar: {
         friends: [{name: "Ivan" }, {name: "Maria"}, {name: "Nastia"}],
     }
+}
+
+
+
+export const addPost = (postText: string) => {
+    const messagePost: postsType = {id: 5, message: postText, likesCount: 0 }
+    state.profilePage.posts.push(messagePost)
+    rerenderEntireTree(state)
+
 }
 
 export default state

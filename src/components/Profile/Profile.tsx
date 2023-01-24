@@ -8,6 +8,7 @@ import { postsType } from '../../Redux/state';
 
 type ProfilePropsType = {
     posts: postsType[]
+    addPost: (postText: string) => void
 }
 
 const Profile: React.FC<ProfilePropsType> = (props) => {
@@ -16,7 +17,7 @@ const Profile: React.FC<ProfilePropsType> = (props) => {
     return (
         <div>
             <ProfileInfo />
-            <MyPosts posts={props.posts}/>
+            <MyPosts posts={props.posts} addPost={props.addPost}/>
         </div>
     );
 };

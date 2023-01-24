@@ -10,7 +10,7 @@ import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
 import {RootStateType} from './Redux/state';
 import Friends from './components/Friends/Friends';
-
+import {addPost} from './Redux/state';
 
 
 type AppType = {
@@ -28,7 +28,7 @@ const App: React.FC<AppType> = (props) => {
                         dialogs={props.state.dialogsPage.dialogs}
                         messages={props.state.dialogsPage.messages}/>}
                     />
-                    <Route path={'/profile'} render={()=> <Profile posts={props.state.profilePage.posts}/>} />
+                    <Route path={'/profile'} render={()=> <Profile posts={props.state.profilePage.posts} addPost={addPost}/>} />
 
 
 
