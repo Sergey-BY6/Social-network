@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ChangeEvent } from 'react';
 import s from './Dialogs.module.css'
 import DialogItem from './DialogItem/DialogsItem';
 import Message from './Message/Message';
@@ -8,6 +8,9 @@ import { dialogsType, messagesType } from '../../Redux/state';
 type DialogsPropsType = {
     dialogs: dialogsType[]
     messages: messagesType[]
+    newMessageText: string
+    updateNewMessageText: (MessageText: string) => void
+    addMessage: ()=> void
 }
 
 
@@ -18,11 +21,13 @@ const Dialogs: React.FC<DialogsPropsType> = (props) => {
 
     let messageElements = props.messages.map(el => <Message message={el.message}/>)
 
-    let textMessageRef = React.createRef<HTMLTextAreaElement>()
 
-    const addTextRef = () => {
-        let text = textMessageRef.current?.value
-        alert(text)
+    const addMessageText = () => {
+        props.addMessage()
+    }
+
+    const onChangeMessageTextHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
+        props.updateNewMessageText(e.currentTarget.value)
     }
 
     return (
@@ -33,11 +38,13 @@ const Dialogs: React.FC<DialogsPropsType> = (props) => {
             <div className={s.messages}>
                 {messageElements}
                 <textarea
-                    ref={textMessageRef} className={s.area}>
+                    value={props.newMessageText}
+                    onChange={onChangeMessageTextHandler}
+                    className={s.area}>
                 </textarea>
                 <button
                     className={s.btnAdd}
-                    onClick={addTextRef}>Add</button>
+                    onClick={addMessageText}>Add</button>
             </div>
         </div>
 

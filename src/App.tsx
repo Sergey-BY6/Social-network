@@ -8,7 +8,7 @@ import { Route} from 'react-router-dom';
 import News from './components/News/News';
 import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
-import {RootStateType, updateNewPostText} from './Redux/state';
+import {addMessage, RootStateType, updateNewMessageText, updateNewPostText} from './Redux/state';
 import Friends from './components/Friends/Friends';
 import {addPost} from './Redux/state';
 
@@ -26,7 +26,11 @@ const App: React.FC<AppType> = (props) => {
                 <div className="app-wrapper-content">
                     <Route path={'/dialogs'} render={()=> <Dialogs
                         dialogs={props.state.dialogsPage.dialogs}
-                        messages={props.state.dialogsPage.messages}/>}
+                        messages={props.state.dialogsPage.messages}
+                        newMessageText={props.state.dialogsPage.newMessageText}
+                        updateNewMessageText={updateNewMessageText}
+                        addMessage={addMessage}
+                    />}
                     />
                     <Route path={'/profile'} render={()=> <Profile
                         posts={props.state.profilePage.posts}
