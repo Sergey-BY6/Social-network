@@ -1,4 +1,12 @@
-import {rerenderEntireTree} from '../rerenderEntireTree';
+
+
+let onChange = () => {
+
+}
+
+export const subscribe = (callBack: ()=> void) => {
+    onChange = callBack
+}
 
 
 export type dialogsType = {
@@ -85,31 +93,27 @@ export const addPost = () => {
     const messagePost: postsType = {id: 5, message: state.profilePage.newPostText, likesCount: 0 }
     state.profilePage.posts.push(messagePost)
     state.profilePage.newPostText = ""
-    rerenderEntireTree(state)
+    onChange()
 }
 
 export const addMessage = () => {
     const messagePost: messagesType = {id: 5, message: state.dialogsPage.newMessageText }
     state.dialogsPage.messages.push(messagePost)
     state.dialogsPage.newMessageText = ""
-    rerenderEntireTree(state)
+    onChange()
 }
 
 
 
 export const updateNewPostText = (postText: string) => {
     state.profilePage.newPostText = postText
-    rerenderEntireTree(state)
+    onChange()
 }
 
 export const updateNewMessageText = (MessageText: string) => {
     state.dialogsPage.newMessageText = MessageText
-    rerenderEntireTree(state)
+    onChange()
 }
-
-
-
-
 
 
 export default state
