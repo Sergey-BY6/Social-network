@@ -8,7 +8,7 @@ import { Route} from 'react-router-dom';
 import News from './components/News/News';
 import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
-import {RootStateType} from './Redux/state';
+import {RootStateType, updateNewPostText} from './Redux/state';
 import Friends from './components/Friends/Friends';
 import {addPost} from './Redux/state';
 
@@ -28,7 +28,13 @@ const App: React.FC<AppType> = (props) => {
                         dialogs={props.state.dialogsPage.dialogs}
                         messages={props.state.dialogsPage.messages}/>}
                     />
-                    <Route path={'/profile'} render={()=> <Profile posts={props.state.profilePage.posts} addPost={addPost}/>} />
+                    <Route path={'/profile'} render={()=> <Profile
+                        posts={props.state.profilePage.posts}
+                        newPostText={props.state.profilePage.newPostText}
+                        addPost={addPost}
+                        updateNewPostText={updateNewPostText}
+                    />}
+                    />
 
 
 
