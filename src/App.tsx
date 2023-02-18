@@ -30,15 +30,19 @@ const state = props.store.getState()
                         dialogs={state.dialogsPage.dialogs}
                         messages={state.dialogsPage.messages}
                         newMessageText={state.dialogsPage.newMessageText}
-                        updateNewMessageText={props.store.updateNewMessageText.bind(props.store)}
-                        addMessage={props.store.addMessage.bind(props.store)}
+                        dispatch={props.store.dispatch.bind(props.store)}
+
+                        // updateNewMessageText={props.store.updateNewMessageText.bind(props.store)}
+                        // addMessage={props.store.addMessage.bind(props.store)}
                     />}
                     />
                     <Route path={'/profile'} render={()=> <Profile
                         posts={state.profilePage.posts}
                         newPostText={state.profilePage.newPostText}
-                        addPost={props.store.addPost.bind(props.store)}
-                        updateNewPostText={props.store.updateNewPostText.bind(props.store)}
+                        dispatch={props.store.dispatch.bind(props.store)}
+
+                        // addPost={props.store.addPost.bind(props.store)}
+                        // updateNewPostText={props.store.updateNewPostText.bind(props.store)}
                     />}
                     />
 

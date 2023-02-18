@@ -112,15 +112,39 @@ export type RootStateType = {
 
 export type storeType = {
     _state: RootStateType
-    updateNewMessageText: (MessageText: string) => void
-    updateNewPostText: (postText: string) => void
-    addMessage: () => void
-    addPost: () => void
-    subscribe: (callBack: () => void) => void
     _onChange: () => void
-
+    subscribe: (callBack: () => void) => void
     getState: () => RootStateType
+
+    // updateNewMessageText: (MessageText: string) => void
+    // updateNewPostText: (postText: string) => void
+    // addMessage: () => void
+    // addPost: () => void
+
+    dispatch: (action: mainActionType) => void
 }
+
+
+export type mainActionType = addPostActionType | addMessageActionType | updateNewPostTextActionType | updateNewMessageTextActionType
+
+
+type addPostActionType = {
+    type: "ADD-POST"
+}
+type addMessageActionType = {
+    type: "ADD-MESSAGE"
+}
+
+type updateNewPostTextActionType = {
+    type: "UPDATE-NEW-POST-TEXT"
+    newPostText: string
+}
+type updateNewMessageTextActionType = {
+    type: "UPDATE-NEW-MESSAGE-TEXT"
+    newMessageText: string
+}
+
+
 
 const store: storeType = {
     _state: {
@@ -153,35 +177,61 @@ const store: storeType = {
             friends: [{name: 'Ivan'}, {name: 'Maria'}, {name: 'Nastia'}],
         }
     },
-    updateNewMessageText(MessageText: string) {
-        this._state.dialogsPage.newMessageText = MessageText
-        this._onChange()
-    },
-    updateNewPostText(postText: string) {
-        this._state.profilePage.newPostText = postText
-        this._onChange()
-    },
-    addMessage() {
-        const messagePost: messagesType = {id: 5, message: this._state.dialogsPage.newMessageText}
-        this._state.dialogsPage.messages.push(messagePost)
-        this._state.dialogsPage.newMessageText = ''
-        this._onChange()
-    },
-    addPost() {
-        const messagePost: postsType = {id: 5, message: this._state.profilePage.newPostText, likesCount: 0}
-        this._state.profilePage.posts.push(messagePost)
-        this._state.profilePage.newPostText = ''
-        this._onChange()
+    _onChange () {
+        console.log("state changed")
     },
     subscribe(callBack) {
         this._onChange = callBack
     },
-    _onChange () {
-        console.log("state changed")
-    },
-
     getState() {
         return this._state
+    },
+
+    // addPost() {
+    //     const messagePost: postsType = {id: 5, message: this._state.profilePage.newPostText, likesCount: 0}
+    //     this._state.profilePage.posts.push(messagePost)
+    //     this._state.profilePage.newPostText = ''
+    //     this._onChange()
+    // },
+
+    // addMessage() {
+    //     const messagePost: messagesType = {id: 5, message: this._state.dialogsPage.newMessageText}
+    //     this._state.dialogsPage.messages.push(messagePost)
+    //     this._state.dialogsPage.newMessageText = ''
+    //     this._onChange()
+    // },
+
+    // updateNewPostText(postText: string) {
+    //     this._state.profilePage.newPostText = postText
+    //     this._onChange()
+    // },
+
+    // updateNewMessageText(MessageText: string) {
+    //     this._state.dialogsPage.newMessageText = MessageText
+    //     this._onChange()
+    // },
+
+
+    dispatch (action) {
+        if (action.type === 'ADD-POST') {
+            const messagePost: postsType = {id: 5, message: this._state.profilePage.newPostText, likesCount: 0}
+            this._state.profilePage.posts.push(messagePost)
+            this._state.profilePage.newPostText = ''
+            this._onChange()
+        }
+        else if (action.type === 'ADD-MESSAGE') {
+            const messagePost: messagesType = {id: 5, message: this._state.dialogsPage.newMessageText}
+            this._state.dialogsPage.messages.push(messagePost)
+            this._state.dialogsPage.newMessageText = ''
+            this._onChange()
+        }
+        else if (action.type === "UPDATE-NEW-POST-TEXT") {
+            this._state.profilePage.newPostText = action.newPostText
+            this._onChange()
+        }
+        else if (action.type === "UPDATE-NEW-MESSAGE-TEXT") {
+            this._state.dialogsPage.newMessageText = action.newMessageText
+            this._onChange()        }
     }
 }
 
