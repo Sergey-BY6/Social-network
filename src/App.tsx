@@ -8,35 +8,37 @@ import { Route} from 'react-router-dom';
 import News from './components/News/News';
 import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
-import {addMessage, RootStateType, updateNewMessageText, updateNewPostText} from './Redux/state';
+import {RootStateType, storeType} from './Redux/state';
 import Friends from './components/Friends/Friends';
-import {addPost} from './Redux/state';
+
 
 
 type AppType = {
-    state: RootStateType
+    store: storeType
 }
 
 const App: React.FC<AppType> = (props) => {
 
+const state = props.store.getState()
+
     return (
             <div className="app-wrapper">
                 <Header/>
-                <Navbar state={props.state}/>
+                <Navbar state={state}/>
                 <div className="app-wrapper-content">
                     <Route path={'/dialogs'} render={()=> <Dialogs
-                        dialogs={props.state.dialogsPage.dialogs}
-                        messages={props.state.dialogsPage.messages}
-                        newMessageText={props.state.dialogsPage.newMessageText}
-                        updateNewMessageText={updateNewMessageText}
-                        addMessage={addMessage}
+                        dialogs={state.dialogsPage.dialogs}
+                        messages={state.dialogsPage.messages}
+                        newMessageText={state.dialogsPage.newMessageText}
+                        updateNewMessageText={props.store.updateNewMessageText.bind(props.store)}
+                        addMessage={props.store.addMessage.bind(props.store)}
                     />}
                     />
                     <Route path={'/profile'} render={()=> <Profile
-                        posts={props.state.profilePage.posts}
-                        newPostText={props.state.profilePage.newPostText}
-                        addPost={addPost}
-                        updateNewPostText={updateNewPostText}
+                        posts={state.profilePage.posts}
+                        newPostText={state.profilePage.newPostText}
+                        addPost={props.store.addPost.bind(props.store)}
+                        updateNewPostText={props.store.updateNewPostText.bind(props.store)}
                     />}
                     />
 
