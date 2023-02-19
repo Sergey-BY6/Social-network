@@ -2,7 +2,7 @@ import React from 'react';
 import s from './Profile.module.css'
 import MyPosts from './MyPosts/MyPosts';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
-import {mainActionType, postsType} from '../../Redux/state';
+import {mainType, postsType} from '../../Redux/state';
 
 
 
@@ -12,7 +12,7 @@ type ProfilePropsType = {
     // addPost: () => void
     // updateNewPostText: (postText: string) => void
 
-    dispatch: (action: mainActionType) => void
+    dispatch: (action: mainType) => void
 }
 
 const Profile: React.FC<ProfilePropsType> = (props) => {

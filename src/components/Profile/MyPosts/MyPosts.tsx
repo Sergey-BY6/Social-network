@@ -1,7 +1,8 @@
 import React, { ChangeEvent } from 'react';
-import {addPostAC, mainActionType, postsType, updateNewPostTextAC} from '../../../Redux/state';
+import {mainType, postsType} from '../../../Redux/state';
 import s from "./MuPosts.module.css"
 import Post from './Post/Post';
+import {addPostAC, updateNewPostTextAC} from '../../../Redux/profileReducer';
 
 
 
@@ -13,7 +14,7 @@ type MyPostsPropsType = {
     newPostText: string
     // updateNewPostText: ((postText: string) => void)
 
-    dispatch: (action: mainActionType) => void
+    dispatch: (action: mainType) => void
 }
 
 const MyPosts: React.FC<MyPostsPropsType> = (props) => {

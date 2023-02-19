@@ -1,4 +1,6 @@
-
+import {addPostACType, profileReducer, updateNewPostTextACType} from './profileReducer';
+import {addMessageACType, dialogsReducer, updateNewMessageTextACType} from './dialogsReducer';
+import {sidebarReducer} from './sidebarReducer';
 
 export type dialogsType = {
     id: number
@@ -47,59 +49,17 @@ export type RootStateType = {
 }
 
 
-
-
-
-
 export type storeType = {
     _state: RootStateType
     _onChange: () => void
     subscribe: (callBack: () => void) => void
     getState: () => RootStateType
 
-    dispatch: (action: mainActionType) => void
+    dispatch: (action: mainType) => void
 }
 
 
-export type mainActionType = addPostACType | addMessageACType | updateNewPostTextACType | updateNewMessageTextACType
-
-
-const ADD_POST = "ADD-POST"
-const ADD_MESSAGE = "ADD-MESSAGE"
-const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT"
-const UPDATE_NEW_MESSAGE_TEXT = "UPDATE-NEW-MESSAGE-TEXT"
-
-
-type addPostACType = ReturnType<typeof addPostAC>
-export const addPostAC = () => {
-    return {
-        type: ADD_POST,
-    } as const
-}
-
-type addMessageACType = ReturnType<typeof addMessageAC>
-export const addMessageAC = () => {
-    return {
-        type: ADD_MESSAGE,
-    } as const
-}
-
-type updateNewPostTextACType = ReturnType<typeof updateNewPostTextAC>
-export const updateNewPostTextAC = (newPostText: string) => {
-    return {
-        type: UPDATE_NEW_POST_TEXT,
-        newPostText: newPostText
-    } as const
-}
-
-type updateNewMessageTextACType = ReturnType<typeof updateNewMessageTextAC>
-export const updateNewMessageTextAC = (newMessageText: string) => {
-    return {
-        type: UPDATE_NEW_MESSAGE_TEXT,
-        newMessageText: newMessageText
-    } as const
-}
-
+export type mainType = addPostACType | addMessageACType | updateNewPostTextACType | updateNewMessageTextACType
 
 
 
@@ -134,8 +94,8 @@ const store: storeType = {
             friends: [{name: 'Ivan'}, {name: 'Maria'}, {name: 'Nastia'}],
         }
     },
-    _onChange () {
-        console.log("state changed")
+    _onChange() {
+        console.log('state changed')
     },
     subscribe(callBack) {
         this._onChange = callBack
@@ -144,26 +104,12 @@ const store: storeType = {
         return this._state
     },
 
-    dispatch (action) {
-        if (action.type === 'ADD-POST') {
-            const messagePost: postsType = {id: 5, message: this._state.profilePage.newPostText, likesCount: 0}
-            this._state.profilePage.posts.push(messagePost)
-            this._state.profilePage.newPostText = ''
-            this._onChange()
-        }
-        else if (action.type === 'ADD-MESSAGE') {
-            const messagePost: messagesType = {id: 5, message: this._state.dialogsPage.newMessageText}
-            this._state.dialogsPage.messages.push(messagePost)
-            this._state.dialogsPage.newMessageText = ''
-            this._onChange()
-        }
-        else if (action.type === "UPDATE-NEW-POST-TEXT") {
-            this._state.profilePage.newPostText = action.newPostText
-            this._onChange()
-        }
-        else if (action.type === "UPDATE-NEW-MESSAGE-TEXT") {
-            this._state.dialogsPage.newMessageText = action.newMessageText
-            this._onChange()        }
+    dispatch(action) {
+        this._state.profilePage = profileReducer(this._state.profilePage, action)
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action)
+        this._state.sidebar = sidebarReducer(this._state.sidebar, action)
+
+        this._onChange()
     }
 }
 
