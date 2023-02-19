@@ -8,13 +8,13 @@ import { Route} from 'react-router-dom';
 import News from './components/News/News';
 import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
-import {RootStateType, storeType} from './Redux/state';
+import {RootStateType, storeType} from './Redux/store';
 import Friends from './components/Friends/Friends';
 
 
 
 type AppType = {
-    store: storeType
+    store: storeType ////пофиксить тип
 }
 
 const App: React.FC<AppType> = (props) => {

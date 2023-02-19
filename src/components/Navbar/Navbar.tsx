@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import s from './Navbar.module.css'
-import {RootStateType} from '../../Redux/state';
+import {RootStateType} from '../../Redux/store';
 
 
 type NavBartype = {
