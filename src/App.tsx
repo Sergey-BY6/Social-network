@@ -3,13 +3,13 @@ import './App.css';
 import Header from './components/Header/Header';
 import Navbar from './components/Navbar/Navbar';
 import Profile from './components/Profile/Profile';
-import Dialogs from './components/Dialogs/Dialogs';
 import { Route} from 'react-router-dom';
 import News from './components/News/News';
 import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
-import {RootStateType, storeType} from './Redux/store';
+import {storeType} from './Redux/store';
 import Friends from './components/Friends/Friends';
+import DialogsContainer from './components/Dialogs/DialogsContainer';
 
 
 
@@ -26,20 +26,22 @@ const state = props.store.getState()
                 <Header/>
                 <Navbar state={state}/>
                 <div className="app-wrapper-content">
-                    <Route path={'/dialogs'} render={()=> <Dialogs
-                        dialogs={state.dialogsPage.dialogs}
-                        messages={state.dialogsPage.messages}
-                        newMessageText={state.dialogsPage.newMessageText}
-                        dispatch={props.store.dispatch.bind(props.store)}
+                    <Route path={'/dialogs'} render={()=> <DialogsContainer
+                        store={props.store}
+                        // dialogs={state.dialogsPage.dialogs}
+                        // messages={state.dialogsPage.messages}
+                        // newMessageText={state.dialogsPage.newMessageText}
+                        // dispatch={props.store.dispatch.bind(props.store)}
 
                         // updateNewMessageText={props.store.updateNewMessageText.bind(props.store)}
                         // addMessage={props.store.addMessage.bind(props.store)}
                     />}
                     />
                     <Route path={'/profile'} render={()=> <Profile
-                        posts={state.profilePage.posts}
-                        newPostText={state.profilePage.newPostText}
-                        dispatch={props.store.dispatch.bind(props.store)}
+                        store={props.store}
+                        // posts={state.profilePage.posts}
+                        // newPostText={state.profilePage.newPostText}
+                        // dispatch={props.store.dispatch.bind(props.store)}
 
                         // addPost={props.store.addPost.bind(props.store)}
                         // updateNewPostText={props.store.updateNewPostText.bind(props.store)}
