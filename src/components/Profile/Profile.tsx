@@ -1,6 +1,5 @@
 import React from 'react';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
-import {storeType} from '../../Redux/store';
 import MyPostsContainer from './MyPosts/MyPostsContainer';
 
 
@@ -12,7 +11,7 @@ type ProfilePropsType = {
     // updateNewPostText: (postText: string) => void
 
     // dispatch: (action: mainType) => void
-    store: storeType
+    // store: storeType
 }
 
 const Profile: React.FC<ProfilePropsType> = (props) => {
@@ -21,7 +20,8 @@ const Profile: React.FC<ProfilePropsType> = (props) => {
     return (
         <div>
             <ProfileInfo />
-            <MyPostsContainer store={props.store}
+            <MyPostsContainer
+                // store={props.store}
 
                 // posts={props.posts}
                 //      newPostText={props.newPostText}

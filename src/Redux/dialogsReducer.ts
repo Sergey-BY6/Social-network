@@ -1,20 +1,29 @@
 
-import {avatarMan, avatarWoman, dialogsPageType, mainType, messagesType} from './store';
+import {dialogsPageType, mainType, messagesType} from './store';
 
 
 const ADD_MESSAGE = 'ADD-MESSAGE'
 const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT'
 
 
+//При передачи перемнной avatarMan/avatarWoman в avatar dialogs происходит ошибка,
+// поэтому передал напрямую ссылки
+
+// export const avatarMan = 'https://pixelbox.ru/wp-content/uploads/2021/03/ava-instagram-49.jpg'
+// export const avatarWoman = 'https://pixelbox.ru/wp-content/uploads/2021/02/mult-ava-instagram-58.jpg'
+
+
+
 let initialState = {
+
     newMessageText: '',
     dialogs: [
-        {id: 1, name: 'Dimych', avatar: avatarMan},
-        {id: 2, name: 'Andrey', avatar: avatarMan},
-        {id: 3, name: 'Sveta', avatar: avatarWoman},
-        {id: 4, name: 'Sasha', avatar: avatarWoman},
-        {id: 5, name: 'Victor', avatar: avatarMan},
-        {id: 6, name: 'Valera', avatar: avatarMan}
+        {id: 1, name: 'Dimych', avatar: 'https://pixelbox.ru/wp-content/uploads/2021/03/ava-instagram-49.jpg'},
+        {id: 2, name: 'Andrey', avatar: 'https://pixelbox.ru/wp-content/uploads/2021/03/ava-instagram-49.jpg'},
+        {id: 3, name: 'Sveta', avatar: 'https://pixelbox.ru/wp-content/uploads/2021/02/mult-ava-instagram-58.jpg'},
+        {id: 4, name: 'Sasha', avatar: 'https://pixelbox.ru/wp-content/uploads/2021/02/mult-ava-instagram-58.jpg'},
+        {id: 5, name: 'Victor', avatar: 'https://pixelbox.ru/wp-content/uploads/2021/03/ava-instagram-49.jpg'},
+        {id: 6, name: 'Valera', avatar: 'https://pixelbox.ru/wp-content/uploads/2021/03/ava-instagram-49.jpg'}
     ],
     messages: [
         {id: 1, message: 'Hi'},

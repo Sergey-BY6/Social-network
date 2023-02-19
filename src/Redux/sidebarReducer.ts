@@ -8,4 +8,5 @@ let initialState = {
 export const sidebarReducer = (state: sidebarType = initialState, action: mainType) => {
 
 return state
+
 }
