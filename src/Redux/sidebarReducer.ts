@@ -1,11 +1,22 @@
 
-import {mainType, sidebarType} from './store';
 
-let initialState = {
-    friends: [{name: 'Ivan'}, {name: 'Maria'}, {name: 'Nastia'}]
+export type SidebarFriendsType = {
+    name: string
+}
+export type SidebarType = {
+    friends: SidebarFriendsType[]
 }
 
-export const sidebarReducer = (state: sidebarType = initialState, action: mainType) => {
+
+let initialState = {
+    friends: [{name: 'Ivan'}, {name: 'Maria'}, {name: 'Nastia'}] as SidebarFriendsType[]
+}
+
+export type InitialState = typeof initialState
+
+
+
+export const sidebarReducer = (state: InitialState = initialState, action: any): InitialState => {
 
 return state
 

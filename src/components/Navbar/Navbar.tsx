@@ -5,7 +5,7 @@ import {RootStateType} from '../../Redux/store';
 
 
 type NavBartype = {
-    state: RootStateType
+    // state: AppStateType
 }
 
 
@@ -31,20 +31,20 @@ const Navbar: React.FC<NavBartype> = (props) => {
             </div>
             <div className={s.friends}>
                 <NavLink to={'/friends'} activeClassName={s.activeLink}>Friends</NavLink>
-                <div className={s.friendsPersons}>
-                    <div>
-                        <div className={s.personsCircle}></div>
-                        <div className={s.friendsPerson}>{props.state.sidebar.friends[0].name}</div>
-                    </div>
-                    <div>
-                        <div className={s.personsCircle}></div>
-                        <div className={s.friendsPerson}>{props.state.sidebar.friends[1].name}</div>
-                    </div>
-                    <div>
-                        <div className={s.personsCircle}></div>
-                        <div className={s.friendsPerson}>{props.state.sidebar.friends[2].name}</div>
-                    </div>
-                </div>
+                {/*<div className={s.friendsPersons}>*/}
+                {/*    <div>*/}
+                {/*        <div className={s.personsCircle}></div>*/}
+                {/*        <div className={s.friendsPerson}>{props.state.sidebar.friends[0].name}</div>*/}
+                {/*    </div>*/}
+                {/*    <div>*/}
+                {/*        <div className={s.personsCircle}></div>*/}
+                {/*        <div className={s.friendsPerson}>{props.state.sidebar.friends[1].name}</div>*/}
+                {/*    </div>*/}
+                {/*    <div>*/}
+                {/*        <div className={s.personsCircle}></div>*/}
+                {/*        <div className={s.friendsPerson}>{props.state.sidebar.friends[2].name}</div>*/}
+                {/*    </div>*/}
+                {/*</div>*/}
             </div>
         </nav>
     );

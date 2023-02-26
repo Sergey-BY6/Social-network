@@ -2,45 +2,44 @@ import {addPostACType, profileReducer, updateNewPostTextACType} from './profileR
 import {addMessageACType, dialogsReducer, updateNewMessageTextACType} from './dialogsReducer';
 import {sidebarReducer} from './sidebarReducer';
 
-export type dialogsType = {
+type dialogsType = {
     id: number
     name: string
     avatar: string
 }
-
-export type messagesType = {
+type messagesType = {
     id: number
     message: string
 }
-
-export type postsType = {
-    id: number
-    message: string
-    likesCount: number
-}
-
-
-export type profilePageType = {
-    posts: postsType[]
-    newPostText: string
-}
-
-export type dialogsPageType = {
+type dialogsPageType = {
     newMessageText: string
     dialogs: dialogsType[],
     messages: messagesType[]
 }
 
 
-export type SidebarFriendsType = {
+type postsType = {
+    id: number
+    message: string
+    likesCount: number
+}
+type profilePageType = {
+    posts: postsType[]
+    newPostText: string
+}
+
+
+type SidebarFriendsType = {
     name: string
 }
-export type sidebarType = {
+type sidebarType = {
     friends: SidebarFriendsType[]
 }
 
-export const avatarMan = 'https://pixelbox.ru/wp-content/uploads/2021/03/ava-instagram-49.jpg'
-export const avatarWoman = 'https://pixelbox.ru/wp-content/uploads/2021/02/mult-ava-instagram-58.jpg'
+
+
+const avatarMan = 'https://pixelbox.ru/wp-content/uploads/2021/03/ava-instagram-49.jpg'
+const avatarWoman = 'https://pixelbox.ru/wp-content/uploads/2021/02/mult-ava-instagram-58.jpg'
 
 export type RootStateType = {
     profilePage: profilePageType
@@ -105,12 +104,11 @@ const store: storeType = {
     },
 
     dispatch(action) {
-        this._state.profilePage = profileReducer(this._state.profilePage, action)
-        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action)
-        this._state.sidebar = sidebarReducer(this._state.sidebar, action)
+        // this._state.profilePage = profileReducer(this._state.profilePage, action)
+        // this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action)
+        // this._state.sidebar = sidebarReducer(this._state.sidebar, action)
 
         this._onChange()
     }
 }
 
-export default store

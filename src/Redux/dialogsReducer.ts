@@ -1,17 +1,18 @@
 
-import {dialogsPageType, mainType, messagesType} from './store';
-
-
 const ADD_MESSAGE = 'ADD-MESSAGE'
 const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT'
 
 
-//При передачи перемнной avatarMan/avatarWoman в avatar dialogs происходит ошибка,
-// поэтому передал напрямую ссылки
+export type dialogsType = {
+    id: number
+    name: string
+    avatar: string
+}
 
-// export const avatarMan = 'https://pixelbox.ru/wp-content/uploads/2021/03/ava-instagram-49.jpg'
-// export const avatarWoman = 'https://pixelbox.ru/wp-content/uploads/2021/02/mult-ava-instagram-58.jpg'
-
+export type messagesType = {
+    id: number
+    message: string
+}
 
 
 let initialState = {
@@ -24,19 +25,23 @@ let initialState = {
         {id: 4, name: 'Sasha', avatar: 'https://pixelbox.ru/wp-content/uploads/2021/02/mult-ava-instagram-58.jpg'},
         {id: 5, name: 'Victor', avatar: 'https://pixelbox.ru/wp-content/uploads/2021/03/ava-instagram-49.jpg'},
         {id: 6, name: 'Valera', avatar: 'https://pixelbox.ru/wp-content/uploads/2021/03/ava-instagram-49.jpg'}
-    ],
+    ] as dialogsType[],
     messages: [
         {id: 1, message: 'Hi'},
         {id: 2, message: 'How is your it-kamasutra'},
         {id: 3, message: 'Yo'},
         {id: 4, message: 'Yo'},
         {id: 5, message: 'Yo'},
-    ]
+    ] as messagesType[]
 }
 
 
-export const dialogsReducer = (state: dialogsPageType = initialState, action: mainType) => {
+type MainType = addMessageACType | updateNewMessageTextACType
+export type InitialStateType = typeof initialState
 
+
+
+export const dialogsReducer = (state: InitialStateType = initialState, action: MainType): InitialStateType => {
     switch (action.type) {
         case ADD_MESSAGE: {
             const messagePost: messagesType = {id: 5, message: state.newMessageText}
