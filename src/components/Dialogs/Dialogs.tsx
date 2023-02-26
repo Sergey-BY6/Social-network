@@ -8,9 +8,9 @@ import {DialogsPropsType} from './DialogsContainer';
 
 const Dialogs: React.FC<DialogsPropsType> = (props) => {
 
-    let dialogElements = props.dialogs.map(el => <DialogItem name={el.name} id={el.id} avatar={el.avatar}/>)
+    let dialogElements = props.dialogs.map(el => <DialogItem key={el.id} name={el.name} id={el.id} avatar={el.avatar}/>)
 
-    let messageElements = props.messages.map(el => <Message message={el.message}/>)
+    let messageElements = props.messages.map(el => <Message key={el.id} message={el.message}/>)
 
 
     const addMessageText = () => {

@@ -7,7 +7,7 @@ import Post from './Post/Post';
 export const MyPosts: React.FC<MyPostsPropsType> = (props) => {
 
 
-    let postsElements = props.posts.map(el =>  <Post message={el.message} likesCount={el.likesCount}/>)
+    let postsElements = props.posts.map(el =>  <Post key={el.id} message={el.message} likesCount={el.likesCount}/>)
 
     const onAddPost = ()=> {
             props.addPost()
