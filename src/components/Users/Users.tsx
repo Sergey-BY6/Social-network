@@ -9,16 +9,21 @@ const Users: React.FC<UsersPropsType> = (props) => {
 
     // {id: 1, photoUrl: "https://avatars.mds.yandex.n", followed: false, fullName: "Dmitry", status: "I am a boss", location: {city: "Minsk", country: "Belarus"}},
     //
-    if (props.usersPage.users.length === 0) {
-        // debugger
-      axios.get("https://social-network.samuraijs.com/api/1.0/users").then(response => {
-          console.log(response)
-          props.setUsers(response.data.items)
-      })
+
+    const getUsers = () => {
+        if (props.usersPage.users.length === 0) {
+            // debugger
+            axios.get("https://social-network.samuraijs.com/api/1.0/users").then(response => {
+                console.log(response)
+                props.setUsers(response.data.items)
+            })
+        }
     }
-    console.log(props.usersPage.users)
+
+
     return (
         <div>
+            <button onClick={getUsers}>Get Users</button>
             {
                 props.usersPage.users.map(el => <div key={el.id}>
                     <span>
