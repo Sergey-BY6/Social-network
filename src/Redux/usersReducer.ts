@@ -1,6 +1,9 @@
 const FOLLOW = 'FOLLOW'
 const UNFOLLOW = 'UNFOLLOW'
 const SET_USERS = 'SET_USERS'
+const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
+const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT'
+
 
 // type UserLocationType = {
 //     city: string
@@ -44,7 +47,10 @@ export type UsersType = {
 
 
 let initialState = {
-    users: [] as UsersType[]
+    users: [] as UsersType[],
+    pageSize: 5,
+    totalUsersCount: 0,
+    currentPage: 3
 }
 
 export type InitialStateType = typeof initialState
@@ -68,7 +74,15 @@ export const usersReducer = (state: InitialStateType = initialState, action: Mai
         }
         case SET_USERS: {
 
-            return {...state, users: [...state.users, ...action.payload.users]}
+            return {...state, users: action.payload.users}
+        }
+        case SET_CURRENT_PAGE: {
+
+            return {...state, currentPage: action.payload.currentPage}
+        }
+        case SET_TOTAL_USERS_COUNT: {
+
+            return {...state, totalUsersCount: action.payload.totalCount}
         }
 
         default: {
@@ -78,7 +92,7 @@ export const usersReducer = (state: InitialStateType = initialState, action: Mai
 }
 
 
-export type MainType = followACType | unFollowACType | setUsersACType
+export type MainType = followACType | unFollowACType | setUsersACType | setCurrentPageACType | setTotalUsersCountACType
 
 
 type followACType = ReturnType<typeof followAC>
@@ -108,6 +122,28 @@ export const setUsersAC = (users: UsersType[]) => {
         type: SET_USERS,
         payload: {
             users: users
+        }
+    } as const
+}
+
+
+export type setCurrentPageACType = ReturnType<typeof setCurrentPageAC>
+export const setCurrentPageAC = (currentPage: number) => {
+    return {
+        type: SET_CURRENT_PAGE,
+        payload: {
+            currentPage: currentPage
+        }
+    } as const
+}
+
+
+export type setTotalUsersCountACType = ReturnType<typeof setTotalUsersCountAC>
+export const setTotalUsersCountAC = (totalCount: number) => {
+    return {
+        type: SET_TOTAL_USERS_COUNT,
+        payload: {
+            totalCount: totalCount
         }
     } as const
 }
