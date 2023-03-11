@@ -50,7 +50,7 @@ let initialState = {
     users: [] as UsersType[],
     pageSize: 5,
     totalUsersCount: 0,
-    currentPage: 3
+    currentPage: 1
 }
 
 export type InitialStateType = typeof initialState
