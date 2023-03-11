@@ -2,6 +2,7 @@ import React from 'react';
 import s from './Users.module.css';
 import userPhoto from '../../assets/images/user.jpg';
 import {InitialStateType} from '../../Redux/usersReducer';
+import {NavLink} from 'react-router-dom';
 
 
 
@@ -44,8 +45,11 @@ const Users: React.FC<UsersPropsType> = (props) => {
                 props.usersPage.users.map(el => <div key={el.id}>
                     <span>
                         <div>
-                            <img src={el.photos.small !== null ? el.photos.small : userPhoto} className={s.userPhoto}
-                                 alt="paint"/>
+                            <NavLink to={"/profile/" + el.id}>
+                               <img src={el.photos.small !== null ? el.photos.small : userPhoto} className={s.userPhoto}
+                                    alt="paint"/>
+                            </NavLink>
+
                         </div>
                         <div>
                                  {el.followed

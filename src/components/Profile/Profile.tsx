@@ -1,17 +1,13 @@
 import React from 'react';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
 import MyPostsContainer from './MyPosts/MyPostsContainer';
+import {ProfileType} from '../../Redux/profileReducer';
 
 
 
 type ProfilePropsType = {
-    // posts: postsType[]
-    // newPostText: string
-    // addPost: () => void
-    // updateNewPostText: (postText: string) => void
-
-    // dispatch: (action: mainType) => void
-    // store: storeType
+    profile: ProfileType | null
+    isFetching: boolean
 }
 
 const Profile: React.FC<ProfilePropsType> = (props) => {
@@ -19,16 +15,8 @@ const Profile: React.FC<ProfilePropsType> = (props) => {
 
     return (
         <div>
-            <ProfileInfo />
+            <ProfileInfo profile={props.profile} isFetching={props.isFetching}/>
             <MyPostsContainer
-                // store={props.store}
-
-                // posts={props.posts}
-                //      newPostText={props.newPostText}
-                     // addPost={props.addPost}
-                     // updateNewPostText={props.updateNewPostText}
-                     // dispatch={props.dispatch}
-
             />
 
         </div>
