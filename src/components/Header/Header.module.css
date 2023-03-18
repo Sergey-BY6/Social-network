@@ -7,3 +7,12 @@
     width: 25px;
 }
 
+
+.loginBlock {
+    margin-left: 90vw;
+   color: white;
+}
+
+.loginBlock a {
+    color: white;
+}

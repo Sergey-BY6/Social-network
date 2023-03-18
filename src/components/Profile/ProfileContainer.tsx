@@ -3,7 +3,7 @@ import Profile from './Profile';
 import axios from 'axios';
 import {connect} from 'react-redux';
 import {AppStateType} from '../../Redux/redux-store';
-import {InitialStateType, postsType, ProfileType, setUserProfile, toggleProfilePage} from '../../Redux/profileReducer';
+import { ProfileType, setUserProfile, toggleProfilePage} from '../../Redux/profileReducer';
 import {RouteComponentProps, withRouter } from 'react-router-dom';
 
 
@@ -25,6 +25,8 @@ class ProfileContainer extends React.Component<ProfilePropsType> {
             // console.log(this.props.)
         })
     }
+
+
 
     render() {
         return (
@@ -67,5 +69,6 @@ const mapStateToProps = (state: AppStateType): mapStateToPropsType => {
 
 
 let WithUrlDataContainerComponent = withRouter(ProfileContainer)
+
 
 export default connect (mapStateToProps, {setUserProfile, toggleProfilePage})(WithUrlDataContainerComponent);
