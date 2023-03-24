@@ -71,6 +71,7 @@ const Users: React.FC<UsersPropsType> = (props) => {
                                                            if (data.resultCode === 0) {
                                                                props.unfollow((el.id))
                                                            }
+
                                                            props.toggleFollowingInProgress(false, el.id)
                                                        })
                                                }}>UnFollow</button>
