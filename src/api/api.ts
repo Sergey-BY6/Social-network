@@ -12,18 +12,33 @@ const instance = axios.create({
 
 
 export const usersAPI = {
+    // getUsers(currentPage: number = 1, pageSize: number = 10) {
+    //     return axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${currentPage}&count=${pageSize}`, {withCredentials: true})
+    //         .then(response => {
+    //             return response.data
+    //         })
+    // },
     getUsers(currentPage: number = 1, pageSize: number = 10) {
-        return axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${currentPage}&count=${pageSize}`, {withCredentials: true})
+        return instance.get(`users?page=${currentPage}&count=${pageSize}`)
             .then(response => {
                 return response.data
             })
     },
     follow(elId: number) {
-        return instance.delete(`follow/${elId}`)
+        return instance.post(`follow/${elId}`)
             .then(response => response.data)
     },
     unFollow(elId: number) {
-        return instance.post(`follow/${elId}`, {})
+        return instance.delete(`follow/${elId}`)
             .then(response => response.data)
     }
+}
+
+
+
+
+export const headerAPI = {
+    login () {
+       return axios.get(`https://social-network.samuraijs.com/api/1.0/auth/me`, {withCredentials: true})
+    },
 }

@@ -1,3 +1,7 @@
+import {Dispatch} from 'redux';
+import {headerAPI, usersAPI} from '../api/api';
+import {toggleFollowingInProgress, unFollowSuccess} from './usersReducer';
+
 const SET_USER_DATA = 'SET_USER_DATA'
 
 
@@ -47,3 +51,16 @@ export const setAuthUserData = ( id: number, login: string, email: string,) => {
     } as const
 }
 
+
+export const autorization = () => {
+
+    return (dispatch: Dispatch) => {
+        headerAPI.login()
+            .then(response => {
+                if (response.data.resultCode === 0) {
+                    let {id, login, email} = response.data.data
+                    dispatch(setAuthUserData(id, login, email))
+                }
+            })
+    }
+}
