@@ -3,7 +3,7 @@ import Profile from './Profile';
 import {connect} from 'react-redux';
 import {AppStateType} from '../../Redux/redux-store';
 import {getUserProfile, ProfileType, toggleProfilePage} from '../../Redux/profileReducer';
-import {RouteComponentProps, withRouter } from 'react-router-dom';
+import {Redirect, RouteComponentProps, withRouter} from 'react-router-dom';
 
 
 
@@ -28,6 +28,7 @@ class ProfileContainer extends React.Component<ProfilePropsType> {
 
 
     render() {
+        if(!this.props.isAuth) return <Redirect to={"/login"}/>
         return (
             <div>
                 <Profile {...this.props} profile={this.props.profile} isFetching={this.props.isFetching}/>
@@ -45,6 +46,7 @@ type PathParamsType = {
 export type mapStateToPropsType = {
     profile: ProfileType | null
     isFetching: boolean
+    isAuth: boolean
 }
 
 type mapDispatchToPropsType = {
@@ -61,7 +63,8 @@ type ProfilePropsType = RouteComponentProps<PathParamsType> & OwnProfilePropsTyp
 const mapStateToProps = (state: AppStateType): mapStateToPropsType => {
     return {
         profile: state.profilePage.profile,
-        isFetching: state.profilePage.isFetching
+        isFetching: state.profilePage.isFetching,
+        isAuth: state.auth.isAuth
     }
 }
 
