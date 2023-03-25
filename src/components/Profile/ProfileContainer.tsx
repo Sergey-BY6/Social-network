@@ -1,10 +1,10 @@
 import React from 'react';
 import Profile from './Profile';
-import axios from 'axios';
 import {connect} from 'react-redux';
 import {AppStateType} from '../../Redux/redux-store';
-import { ProfileType, setUserProfile, toggleProfilePage} from '../../Redux/profileReducer';
+import {getUserProfile, ProfileType, toggleProfilePage} from '../../Redux/profileReducer';
 import {RouteComponentProps, withRouter } from 'react-router-dom';
+
 
 
 // type ProfilePropsType = {}
@@ -12,18 +12,17 @@ import {RouteComponentProps, withRouter } from 'react-router-dom';
 class ProfileContainer extends React.Component<ProfilePropsType> {
 
     componentDidMount() {
-        console.log(this.props)
         let userId = this.props.match.params.userId
         if(!userId) {
             userId = "2"
         }
-     this.props.toggleProfilePage(true)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/` + userId).then(response => {
-            this.props.setUserProfile(response.data)
-            this.props.toggleProfilePage(false)
-            console.log(this.props)
-            // console.log(this.props.)
-        })
+        this.props.toggleProfilePage(true)
+        // usersAPI.getProfile(userId)
+        // .then(response => {
+        //     this.props.setUserProfile(response.data)
+        //     this.props.toggleProfilePage(false)
+        // })
+        this.props.getUserProfile(userId)
     }
 
 
@@ -32,7 +31,6 @@ class ProfileContainer extends React.Component<ProfilePropsType> {
         return (
             <div>
                 <Profile {...this.props} profile={this.props.profile} isFetching={this.props.isFetching}/>
-
             </div>
         );
     }
@@ -50,8 +48,8 @@ export type mapStateToPropsType = {
 }
 
 type mapDispatchToPropsType = {
-    setUserProfile: (profile: ProfileType) => void
     toggleProfilePage: (isFetching: boolean) => void
+    getUserProfile: (userId: string) => void
 }
 
 
@@ -71,4 +69,7 @@ const mapStateToProps = (state: AppStateType): mapStateToPropsType => {
 let WithUrlDataContainerComponent = withRouter(ProfileContainer)
 
 
-export default connect (mapStateToProps, {setUserProfile, toggleProfilePage})(WithUrlDataContainerComponent);
+export default connect (mapStateToProps, {
+    toggleProfilePage,
+    getUserProfile
+})(WithUrlDataContainerComponent);

@@ -1,3 +1,5 @@
+import { Dispatch } from "redux"
+import {usersAPI} from '../api/api';
 
 export type postsType = {
     id: number
@@ -55,10 +57,6 @@ let initialState = {
 }
 
 
-
-
-
-
 type MainType = updateNewPostTextACType | addPostACType | setUserProfileType | toggleProfilePageType
 export type InitialStateType = typeof initialState
 
@@ -95,15 +93,12 @@ export const updateNewPostTextAC = (newPostText: string) => {
     } as const
 }
 
-
 export type addPostACType = ReturnType<typeof addPostAC>
 export const addPostAC = () => {
     return {
         type: ADD_POST,
     } as const
 }
-
-
 
 export type setUserProfileType = ReturnType<typeof setUserProfile>
 export const setUserProfile = (profile: any) => {
@@ -123,4 +118,17 @@ export const toggleProfilePage = (isFetching: boolean) => {
             isFetching
         }
     } as const
+}
+
+
+
+
+export const getUserProfile = (userId: string) => {
+    return (dispatch: Dispatch) => {
+        usersAPI.getProfile(userId)
+            .then(response => {
+                dispatch(setUserProfile(response.data))
+                dispatch(toggleProfilePage(false))
+            })
+    }
 }

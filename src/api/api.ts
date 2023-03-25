@@ -31,14 +31,18 @@ export const usersAPI = {
     unFollow(elId: number) {
         return instance.delete(`follow/${elId}`)
             .then(response => response.data)
+    },
+    getProfile (userId: string) {
+        return  instance.get(`profile/` + userId)
+
     }
 }
 
 
 
 
-export const headerAPI = {
-    login () {
-       return axios.get(`https://social-network.samuraijs.com/api/1.0/auth/me`, {withCredentials: true})
+export const authAPI = {
+    me () {
+       return instance.get(`auth/me`)
     },
 }

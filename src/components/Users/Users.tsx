@@ -1,10 +1,8 @@
 import React from 'react';
 import s from './Users.module.css';
 import userPhoto from '../../assets/images/user.jpg';
-import {follow, InitialStateType} from '../../Redux/usersReducer';
+import {InitialStateType} from '../../Redux/usersReducer';
 import {NavLink} from 'react-router-dom';
-import axios from 'axios';
-import {usersAPI} from '../../api/api';
 
 
 type UsersPropsType = {
@@ -15,7 +13,6 @@ type UsersPropsType = {
     usersPage: InitialStateType
     follow: (userId: number) => void
     unfollow: (userId: number) => void
-    // toggleFollowingInProgress: (isFetching: boolean, userId: number) => void
     followingInProgress: number []
 
 }

@@ -7,12 +7,9 @@ import {
     setCurrentPage,
     toggleFollowingInProgress,
     unFollow,
-    UsersType
 } from '../../Redux/usersReducer';
-import axios from 'axios';
 import Users from './Users';
 import Preloader from '../common/Preloader/Preloader';
-import { usersAPI} from '../../api/api';
 
 
 class UsersAPIContainer extends React.Component<UsersPropsType> {
@@ -51,7 +48,6 @@ class UsersAPIContainer extends React.Component<UsersPropsType> {
                     usersPage={this.props.usersPage}
                     follow={this.props.follow}
                     unfollow={this.props.unFollow}
-                    // toggleFollowingInProgress={this.props.toggleFollowingInProgress}
                     followingInProgress={this.props.followingInProgress}
                 />
             </>
