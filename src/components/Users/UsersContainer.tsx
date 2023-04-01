@@ -11,6 +11,8 @@ import {
 import Users from './Users';
 import Preloader from '../common/Preloader/Preloader';
 import {mapStateToPropsForRedirectType, withAuthRedirect} from '../../hoc/withAuthRedirect';
+import {compose} from 'redux';
+import Dialogs from '../Dialogs/Dialogs';
 
 
 class UsersAPIContainer extends React.Component<UsersPropsType> {
@@ -116,12 +118,26 @@ const mapStateToProps = (state: AppStateType): mapStateToPropsType => {
 // }
 
 
- let withRedirect = withAuthRedirect(UsersAPIContainer)
+//  let withRedirect = withAuthRedirect(UsersAPIContainer)
+//
+// export const UsersContainer = connect(mapStateToProps, {
+//     follow,
+//     unFollow,
+//     setCurrentPage,
+//     toggleFollowingInProgress,
+//     getUsers
+// })(withRedirect)
 
-export const UsersContainer = connect(mapStateToProps, {
-    follow,
-    unFollow,
-    setCurrentPage,
-    toggleFollowingInProgress,
-    getUsers
-})(withRedirect)
+
+
+export const UsersContainer  = compose<React.ComponentType>(
+    connect(mapStateToProps, {
+        follow,
+        unFollow,
+        setCurrentPage,
+        toggleFollowingInProgress,
+        getUsers
+    }),
+    withAuthRedirect
+)(UsersAPIContainer)
+

@@ -5,6 +5,8 @@ import {AppStateType} from '../../Redux/redux-store';
 import {getUserProfile, ProfileType, toggleProfilePage} from '../../Redux/profileReducer';
 import {Redirect, RouteComponentProps, withRouter} from 'react-router-dom';
 import {mapStateToPropsForRedirectType, withAuthRedirect} from '../../hoc/withAuthRedirect';
+import {compose} from 'redux';
+import Dialogs from '../Dialogs/Dialogs';
 
 
 
@@ -61,9 +63,20 @@ const mapStateToProps = (state: AppStateType): mapStateToPropsType => {
     }
 }
 
-let WithUrlDataContainerComponent = withRouter(ProfileContainer)
+// let WithUrlDataContainerComponent = withRouter(ProfileContainer)
 
-export default withAuthRedirect(connect (mapStateToProps, {
-    toggleProfilePage,
-    getUserProfile
-})(WithUrlDataContainerComponent));
+// export default withAuthRedirect(connect (mapStateToProps, {
+//     toggleProfilePage,
+//     getUserProfile
+// })(WithUrlDataContainerComponent));
+
+
+
+export default compose<React.ComponentType>(
+    connect (mapStateToProps, {
+        toggleProfilePage,
+        getUserProfile
+    }),
+    withRouter,
+    withAuthRedirect
+)(ProfileContainer)
