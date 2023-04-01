@@ -9,7 +9,7 @@ let initialState = {
     id: 1 ,
     login: "1" ,
     email: "1" ,
-    isAuth: false
+    isAuth: true
 }
 
 export type InitialStateType = typeof initialState
