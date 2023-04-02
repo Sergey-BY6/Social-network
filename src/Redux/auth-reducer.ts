@@ -22,7 +22,9 @@ export const authReducer = (state: InitialStateType = initialState, action: Main
             return {
                 ...state,
                 ...action.payload.data,
-                // isAuth: true
+
+                isAuth: true
+
             }
         }
         default: {

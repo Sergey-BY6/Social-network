@@ -8,6 +8,8 @@ import ProfileStatus from './ProfileStatus';
 type ProfileInfoType = {
     profile: ProfileType | null
     isFetching: boolean
+    status: string
+    updateStatus: (status: string) => void
 }
 
 
@@ -33,7 +35,7 @@ const ProfileInfo: React.FC<ProfileInfoType> = (props) => {
                 {/*<div>{props.profile.contacts.facebook}</div>*/}
                 {/*<div>{props.profile.contacts.github}</div>*/}
                 {/*<div>{props.profile.contacts.instagram}</div>*/}
-                <ProfileStatus status={"Hello my friends"}/>
+                <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
             </div>
         </div>
     );
