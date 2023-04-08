@@ -16,7 +16,8 @@ class ProfileContainer extends React.Component<ProfilePropsType> {
     componentDidMount() {
         let userId = this.props.match.params.userId
         if (!userId) {
-            userId = '2'
+            // userId = "2"
+            userId = `${this.props.authorizedUserId}`
         }
         this.props.toggleProfilePage(true)
         this.props.getUserProfile(userId)
@@ -47,6 +48,8 @@ export type mapStateToPropsType = {
     profile: ProfileType | null
     isFetching: boolean
     status: string
+    authorizedUserId: number | null
+    isAuth: boolean
 }
 
 
@@ -68,7 +71,9 @@ const mapStateToProps = (state: AppStateType): mapStateToPropsType => {
     return {
         profile: state.profilePage.profile,
         isFetching: state.profilePage.isFetching,
-        status: state.profilePage.status
+        status: state.profilePage.status,
+        authorizedUserId: state.auth.id,
+        isAuth: state.auth.isAuth
     }
 }
 
