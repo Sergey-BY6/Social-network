@@ -42,7 +42,7 @@ export type ProfileType = {
 
 
 const ADD_POST = "ADD-POST"
-const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT"
+// const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT"
 const SET_USER_PROFILE = "SET_USER_PROFILE"
 const TOGGLE_PROFILE_PAGE = "TOGGLE_PROFILE_PAGE"
 const SET_STATUS = "SET_STATUS"
@@ -52,14 +52,14 @@ let initialState = {
         {id: 1, message: 'Hi, how are you?', likesCount: 12},
         {id: 2, message: 'It\'s my first post', likesCount: 11},
     ] as postsType[],
-    newPostText: '',
+    // newPostText: '',
     profile: null,
     status: "",
     isFetching: false
 }
 
 
-type MainType = updateNewPostTextACType | addPostACType | setUserProfileType | toggleProfilePageType | setStatusType
+type MainType = addPostACType | setUserProfileType | toggleProfilePageType | setStatusType
 export type InitialStateType = typeof initialState
 
 
@@ -67,12 +67,14 @@ export type InitialStateType = typeof initialState
 export const profileReducer = (state: InitialStateType = initialState, action: MainType):InitialStateType  => {
     switch (action.type) {
         case ADD_POST: {
-            let messagePost: postsType = {id: 5, message: state.newPostText, likesCount: 0}
-            return {...state, posts: [...state.posts, messagePost], newPostText: ""}
+            let messagePost: postsType = {id: 5, message: action.newPostText, likesCount: 0}
+            return {...state, posts: [...state.posts, messagePost],
+                // newPostText: ""
+            }
         }
-        case UPDATE_NEW_POST_TEXT: {
-          return {...state, newPostText: action.newPostText}
-        }
+        // case UPDATE_NEW_POST_TEXT: {
+        //   return {...state, newPostText: action.newPostText}
+        // }
         case SET_USER_PROFILE: {
             return {...state, profile: action.payload.profile}
         }
@@ -93,18 +95,19 @@ export const profileReducer = (state: InitialStateType = initialState, action: M
 
 
 
-export type updateNewPostTextACType = ReturnType<typeof updateNewPostTextAC>
-export const updateNewPostTextAC = (newPostText: string) => {
-    return {
-        type: UPDATE_NEW_POST_TEXT,
-        newPostText: newPostText
-    } as const
-}
+// export type updateNewPostTextACType = ReturnType<typeof updateNewPostTextAC>
+// export const updateNewPostTextAC = (newPostText: string) => {
+//     return {
+//         type: UPDATE_NEW_POST_TEXT,
+//         newPostText: newPostText
+//     } as const
+// }
 
 export type addPostACType = ReturnType<typeof addPostAC>
-export const addPostAC = () => {
+export const addPostAC = (newPostText: string) => {
     return {
         type: ADD_POST,
+        newPostText
     } as const
 }
 

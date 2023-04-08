@@ -9,7 +9,7 @@ let initialState = {
     id: 1 ,
     login: "1" ,
     email: "1" ,
-    isAuth: false
+    isAuth: false ///было false
 }
 
 export type InitialStateType = typeof initialState
@@ -23,7 +23,12 @@ export const authReducer = (state: InitialStateType = initialState, action: Main
                 ...state,
                 ...action.payload.data,
 
-                isAuth: true
+
+
+                isAuth: true ///было true
+
+
+
 
             }
         }

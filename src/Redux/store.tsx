@@ -1,6 +1,6 @@
-import {addPostACType, profileReducer, updateNewPostTextACType} from './profileReducer';
-import {addMessageACType, dialogsReducer, updateNewMessageTextACType} from './dialogsReducer';
-import {sidebarReducer} from './sidebarReducer';
+import {addPostACType} from './profileReducer';
+import {addMessageACType} from './dialogsReducer';
+
 
 type dialogsType = {
     id: number
@@ -58,7 +58,7 @@ export type storeType = {
 }
 
 
-export type mainType = addPostACType | addMessageACType | updateNewPostTextACType | updateNewMessageTextACType
+export type mainType = addPostACType | addMessageACType
 
 
 

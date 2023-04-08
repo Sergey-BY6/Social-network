@@ -1,6 +1,6 @@
 
 const ADD_MESSAGE = 'ADD-MESSAGE'
-const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT'
+// const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT'
 
 
 export type dialogsType = {
@@ -17,7 +17,7 @@ export type messagesType = {
 
 let initialState = {
 
-    newMessageText: '',
+    // newMessageText: '',
     dialogs: [
         {id: 1, name: 'Dimych', avatar: 'https://pixelbox.ru/wp-content/uploads/2021/03/ava-instagram-49.jpg'},
         {id: 2, name: 'Andrey', avatar: 'https://pixelbox.ru/wp-content/uploads/2021/03/ava-instagram-49.jpg'},
@@ -36,7 +36,8 @@ let initialState = {
 }
 
 
-type MainType = addMessageACType | updateNewMessageTextACType
+type MainType = addMessageACType
+    // | updateNewMessageTextACType
 export type InitialStateType = typeof initialState
 
 
@@ -44,13 +45,17 @@ export type InitialStateType = typeof initialState
 export const dialogsReducer = (state: InitialStateType = initialState, action: MainType): InitialStateType => {
     switch (action.type) {
         case ADD_MESSAGE: {
-            const messagePost: messagesType = {id: 5, message: state.newMessageText}
-            return {...state, messages: [...state.messages, messagePost], newMessageText: ""}
+            const messagePost: messagesType = {id: 5, message: action.newMessageBody}
+            return {...state, messages: [...state.messages, messagePost],
+                // newMessageText: ""
+            }
 
         }
-        case UPDATE_NEW_MESSAGE_TEXT: {
-            return {...state, newMessageText: action.newMessageText}
-        }
+        // case UPDATE_NEW_MESSAGE_TEXT: {
+        //     return {...state,
+        //         // newMessageText: action.newMessageText
+        //     }
+        // }
         default: {
             return state
         }
@@ -59,16 +64,17 @@ export const dialogsReducer = (state: InitialStateType = initialState, action: M
 
 
 export type addMessageACType = ReturnType<typeof addMessageAC>
-export const addMessageAC = () => {
+export const addMessageAC = (newMessageBody: string) => {
     return {
         type: ADD_MESSAGE,
+        newMessageBody
     } as const
 }
 
-export type updateNewMessageTextACType = ReturnType<typeof updateNewMessageTextAC>
-export const updateNewMessageTextAC = (newMessageText: string) => {
-    return {
-        type: UPDATE_NEW_MESSAGE_TEXT,
-        newMessageText: newMessageText
-    } as const
-}
+// export type updateNewMessageTextACType = ReturnType<typeof updateNewMessageTextAC>
+// export const updateNewMessageTextAC = (newMessageText: string) => {
+//     return {
+//         type: UPDATE_NEW_MESSAGE_TEXT,
+//         newMessageText: newMessageText
+//     } as const
+// }

@@ -3,8 +3,7 @@ import s from './Dialogs.module.css'
 import DialogItem from './DialogItem/DialogsItem';
 import Message from './Message/Message';
 import {DialogsPropsType} from './DialogsContainer';
-import {Redirect} from 'react-router-dom';
-
+import { AddMessageFormRedux, AddMessageFormType } from './addMessageForm/addMessageForm';
 
 
 const Dialogs: React.FC<DialogsPropsType> = (props) => {
@@ -14,15 +13,10 @@ const Dialogs: React.FC<DialogsPropsType> = (props) => {
     let messageElements = props.messages.map(el => <Message key={el.id} message={el.message}/>)
 
 
-    const addMessageText = () => {
-        props.addMessage()
+    const addNewMessage = (formData: AddMessageFormType) => {
+        // console.log(formData.newMessageBody)
+        props.addMessage(formData.newMessageBody)
     }
-
-    const onChangeMessageTextHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        props.updateNewMessageText(e.currentTarget.value)
-    }
-
-    // if(!props.isAuth) return <Redirect to={"/login"}/>
 
 
     return (
@@ -32,15 +26,9 @@ const Dialogs: React.FC<DialogsPropsType> = (props) => {
             </div>
             <div className={s.messages}>
                 {messageElements}
-                <textarea
-                    value={props.newMessageText}
-                    onChange={onChangeMessageTextHandler}
-                    className={s.area}>
-                </textarea>
-                <button
-                    className={s.btnAdd}
-                    onClick={addMessageText}>Add
-                </button>
+
+                <AddMessageFormRedux onSubmit={addNewMessage}/>
+
             </div>
         </div>
 
@@ -48,3 +36,5 @@ const Dialogs: React.FC<DialogsPropsType> = (props) => {
 };
 
 export default Dialogs;
+
+
