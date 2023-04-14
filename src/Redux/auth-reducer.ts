@@ -16,7 +16,7 @@ type InitialStateType = {
 }
 
 let initialState: InitialStateType = {
-    id: 1 ,
+    id: null ,
     login: "1" ,
     email: "1" ,
     isAuth: false ///было false
@@ -65,7 +65,7 @@ export const setAuthUserData = ( id: number | null, login: string | null, email:
 export const getAuthUserData = () => {
 
     return (dispatch: Dispatch) => {
-        authAPI.me()
+        return authAPI.me()
             .then(response => {
                 if (response.data.resultCode === 0) {
                     let {id, login, email} = response.data.data

@@ -18,6 +18,9 @@ class ProfileContainer extends React.Component<ProfilePropsType> {
         if (!userId) {
             // userId = "2"
             userId = `${this.props.authorizedUserId}`
+            if(!(+userId)) {
+                this.props.history.push('/login')
+            }
         }
         this.props.toggleProfilePage(true)
         this.props.getUserProfile(userId)
@@ -76,13 +79,6 @@ const mapStateToProps = (state: AppStateType): mapStateToPropsType => {
         isAuth: state.auth.isAuth
     }
 }
-
-// let WithUrlDataContainerComponent = withRouter(ProfileContainer)
-
-// export default withAuthRedirect(connect (mapStateToProps, {
-//     toggleProfilePage,
-//     getUserProfile
-// })(WithUrlDataContainerComponent));
 
 
 export default compose<React.ComponentType>(
