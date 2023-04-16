@@ -15,6 +15,7 @@ const TOGGLE_IS_FOLLOWING_PROGRESS = 'TOGGLE_IS_FOLLOWING_PROGRESS'
 //     country: string
 // }
 
+
 // export type UsersType = {
 //     id: number,
 //     photoUrl: string
