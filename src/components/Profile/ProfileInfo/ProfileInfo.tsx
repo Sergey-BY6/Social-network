@@ -3,6 +3,7 @@ import s from "./ProfileInfo.module.css"
 import {ProfileType} from '../../../Redux/profileReducer';
 import Preloader from '../../common/Preloader/Preloader';
 import ProfileStatus from './ProfileStatus';
+import ProfileStatusWithHooks from './ProfileStatusWothHooks';
 
 
 type ProfileInfoType = {
@@ -35,7 +36,8 @@ const ProfileInfo: React.FC<ProfileInfoType> = (props) => {
                 {/*<div>{props.profile.contacts.facebook}</div>*/}
                 {/*<div>{props.profile.contacts.github}</div>*/}
                 {/*<div>{props.profile.contacts.instagram}</div>*/}
-                <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
+                {/*<ProfileStatus status={props.status} updateStatus={props.updateStatus}/>*/}
+                <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus}/>
             </div>
         </div>
     );
