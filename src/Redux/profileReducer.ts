@@ -46,6 +46,7 @@ const ADD_POST = "ADD-POST"
 const SET_USER_PROFILE = "SET_USER_PROFILE"
 const TOGGLE_PROFILE_PAGE = "TOGGLE_PROFILE_PAGE"
 const SET_STATUS = "SET_STATUS"
+const DELETE_POST = "DELETE_POST"
 
 let initialState = {
     posts: [
@@ -59,7 +60,7 @@ let initialState = {
 }
 
 
-type MainType = addPostACType | setUserProfileType | toggleProfilePageType | setStatusType
+type MainType = addPostACType | setUserProfileType | toggleProfilePageType | setStatusType | deletePostType
 export type InitialStateType = typeof initialState
 
 
@@ -82,9 +83,11 @@ export const profileReducer = (state: InitialStateType = initialState, action: M
             return {...state, isFetching: action.payload.isFetching}
         }
         case SET_STATUS: {
-            return {
-                ...state,
-                status: action.payload.status
+            return {...state, status: action.payload.status
+            }
+        }
+        case DELETE_POST: {
+            return {...state, posts: state.posts.filter(el => el.id !== action.payload.postId)
             }
         }
         default: {
@@ -141,7 +144,15 @@ export const setStatus = (status: string) => {
     } as const
 }
 
-
+export type deletePostType = ReturnType<typeof deletePost>
+export const deletePost = (postId: number) => {
+    return {
+        type: DELETE_POST,
+        payload: {
+            postId: postId
+        }
+    } as const
+}
 
 export const getUserProfile = (userId: string) => {
     return (dispatch: Dispatch) => {
@@ -176,3 +187,4 @@ export const updateStatus = (status: string) => {
     }
 
 }
+
