@@ -17,14 +17,12 @@ export const rootReducer = combineReducers({
     auth: authReducer,
     form: formReducer,
     app: appReducer
-
 })
 
 
 export type AppStateType = ReturnType<typeof rootReducer>
 
 export let store = createStore(rootReducer, applyMiddleware(thunkMiddleware))
-
 
 // @ts-ignore
 window.store = store

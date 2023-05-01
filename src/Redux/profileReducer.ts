@@ -1,4 +1,4 @@
-import { Dispatch } from "redux"
+import {Dispatch} from 'redux'
 import {profileAPI, usersAPI} from '../api/api';
 
 export type postsType = {
@@ -37,16 +37,16 @@ export type ProfileType = {
     lookingForAJobDescription: string
     fullName: string
     userId: number
-    "photos": ProfileTypePhotos
+    'photos': ProfileTypePhotos
 }
 
 
-const ADD_POST = "ADD-POST"
+const ADD_POST = 'ADD-POST'
 // const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT"
-const SET_USER_PROFILE = "SET_USER_PROFILE"
-const TOGGLE_PROFILE_PAGE = "TOGGLE_PROFILE_PAGE"
-const SET_STATUS = "SET_STATUS"
-const DELETE_POST = "DELETE_POST"
+const SET_USER_PROFILE = 'SET_USER_PROFILE'
+const TOGGLE_PROFILE_PAGE = 'TOGGLE_PROFILE_PAGE'
+const SET_STATUS = 'SET_STATUS'
+const DELETE_POST = 'DELETE_POST'
 
 let initialState = {
     posts: [
@@ -55,7 +55,7 @@ let initialState = {
     ] as postsType[],
     // newPostText: '',
     profile: null,
-    status: "",
+    status: '',
     isFetching: false
 }
 
@@ -64,12 +64,12 @@ type MainType = addPostACType | setUserProfileType | toggleProfilePageType | set
 export type InitialStateType = typeof initialState
 
 
-
-export const profileReducer = (state: InitialStateType = initialState, action: MainType):InitialStateType  => {
+export const profileReducer = (state: InitialStateType = initialState, action: MainType): InitialStateType => {
     switch (action.type) {
         case ADD_POST: {
             let messagePost: postsType = {id: 5, message: action.newPostText, likesCount: 0}
-            return {...state, posts: [...state.posts, messagePost],
+            return {
+                ...state, posts: [...state.posts, messagePost],
                 // newPostText: ""
             }
         }
@@ -83,11 +83,13 @@ export const profileReducer = (state: InitialStateType = initialState, action: M
             return {...state, isFetching: action.payload.isFetching}
         }
         case SET_STATUS: {
-            return {...state, status: action.payload.status
+            return {
+                ...state, status: action.payload.status
             }
         }
         case DELETE_POST: {
-            return {...state, posts: state.posts.filter(el => el.id !== action.payload.postId)
+            return {
+                ...state, posts: state.posts.filter(el => el.id !== action.payload.postId)
             }
         }
         default: {
@@ -95,7 +97,6 @@ export const profileReducer = (state: InitialStateType = initialState, action: M
         }
     }
 }
-
 
 
 // export type updateNewPostTextACType = ReturnType<typeof updateNewPostTextAC>
@@ -154,37 +155,22 @@ export const deletePost = (postId: number) => {
     } as const
 }
 
-export const getUserProfile = (userId: string) => {
-    return (dispatch: Dispatch) => {
-        usersAPI.getProfile(userId)
-            .then(response => {
-                dispatch(setUserProfile(response.data))
-                dispatch(toggleProfilePage(false))
-            })
-    }
+
+export const getUserProfile = (userId: string) => async (dispatch: Dispatch) => {
+    const response = await usersAPI.getProfile(userId)
+    dispatch(setUserProfile(response.data))
+    dispatch(toggleProfilePage(false))
 }
 
-export const getStatus = (userId: string) => {
-
-    return (dispatch: Dispatch) => {
-        profileAPI.getStatus(userId)
-            .then(response => {
-                dispatch(setStatus(response.data))
-            })
-    }
-
+export const getStatus = (userId: string) => async (dispatch: Dispatch) => {
+    const response = await profileAPI.getStatus(userId)
+    dispatch(setStatus(response.data))
 }
 
-export const updateStatus = (status: string) => {
-
-    return (dispatch: Dispatch) => {
-        profileAPI.updateStatus(status)
-            .then(response => {
-                if (response.data.resultCode === 0) {
-                    dispatch(setStatus(status))
-                }
-            })
+export const updateStatus = (status: string) => async (dispatch: Dispatch) => {
+    const response = await profileAPI.updateStatus(status)
+    if (response.data.resultCode === 0) {
+        dispatch(setStatus(status))
     }
-
 }
 

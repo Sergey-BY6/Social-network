@@ -1,7 +1,7 @@
 import React from 'react';
-import {Field, InjectedFormProps, reduxForm} from 'redux-form';
-import {Input} from '../common/FormsControls/FormsControls';
-import {maxLengthCreator, required} from '../../utils/validators/validators';
+import { InjectedFormProps, reduxForm} from 'redux-form';
+import {createField, Input} from '../common/FormsControls/FormsControls';
+import { required} from '../../utils/validators/validators';
 import {connect} from 'react-redux';
 import {login} from '../../Redux/auth-reducer';
 import {Redirect} from 'react-router-dom';
@@ -14,24 +14,26 @@ type FormDataType = {
     rememberMe: boolean
 }
 
-
 export const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
     return (
         <form onSubmit={props.handleSubmit}>
-            <div>
-                <Field placeholder={'Email'} name={'email'} component={Input}
-                       validate={[required]}
-                />
-            </div>
-            <div>
-                <Field placeholder={'Password'} name={'password'} component={Input}
-                       validate={[required]}
-                />
-            </div>
-            <div>
-                <Field component={Input} name={'rememberMe'} type={'checkbox'}
-                /> <span>remember me</span>
-            </div>
+            {/*<div>*/}
+            {/*    <Field placeholder={'Email'} name={'email'} component={Input}*/}
+            {/*           validate={[required]}*/}
+            {/*    />*/}
+            {/*</div>*/}
+            {/*<div>*/}
+            {/*    <Field placeholder={'Password'} name={'password'} component={Input}*/}
+            {/*           validate={[required]}*/}
+            {/*    />*/}
+            {/*</div>*/}
+            {/*<div>*/}
+            {/*    <Field component={Input} name={'rememberMe'} type={'checkbox'}*/}
+            {/*    /> <span>remember me</span>*/}
+            {/*</div>*/}
+            {createField('Email', 'email', [required], Input)}
+            {createField('Password', 'password', [required], Input)}
+            {createField(null,'rememberMe', [], Input, {type: "checkbox"}, "rememberMe")}
             <div>
                 {props.error &&
                     <div className={s.formSummeryError}>
@@ -50,9 +52,6 @@ export const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
 const LoginReduxForm = reduxForm<FormDataType>({form: 'login'})(LoginForm)
 
 
-// type LoginType = {
-//
-// }
 type MapStateToPropsType = {
     isAuth: boolean
     // login: string | null
@@ -78,7 +77,6 @@ const Login: React.FC<LoginPropsType> = (props) => {
         console.log(formData)
         props.login(formData.email, formData.password, formData.rememberMe)
     }
-
 
     if (props.isAuth) {
         return <Redirect to={'/profile'}/>
