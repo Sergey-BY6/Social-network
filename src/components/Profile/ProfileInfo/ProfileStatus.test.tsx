@@ -1,4 +1,4 @@
-import React, {ElementType} from 'react';
+import React from 'react';
 import {create, ReactTestInstance} from 'react-test-renderer';
 import ProfileStatus from './ProfileStatus';
 
