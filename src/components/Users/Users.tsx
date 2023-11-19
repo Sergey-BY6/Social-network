@@ -5,7 +5,7 @@ import {User} from './User';
 
 
 type UsersPropsType = {
-    totalUsersCount: number
+    totalItemsCount: number
     pageSize: number
     currentPage: number
     onPageChanged: (pageNumber: number) => void
@@ -21,7 +21,7 @@ const Users: React.FC<UsersPropsType> = (props) => {
 
     return (
         <div>
-            <Paginator totalUsersCount={props.totalUsersCount}
+            <Paginator totalItemsCount={props.totalItemsCount}
                        pageSize={props.pageSize}
                        currentPage={props.currentPage}
                        onPageChanged={props.onPageChanged}

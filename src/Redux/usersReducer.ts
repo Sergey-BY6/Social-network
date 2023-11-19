@@ -29,7 +29,7 @@ export type UsersType = {
 let initialState = {
     users: [] as UsersType[],
     pageSize: 5,
-    totalUsersCount: 0,
+    totalItemsCount: 0,
     currentPage: 1,
     isFetching: false,
     isFetchingForButton: false,
@@ -60,7 +60,7 @@ export const usersReducer = (state: InitialStateType = initialState, action: Mai
             return {...state, currentPage: action.payload.currentPage}
         }
         case SET_TOTAL_USERS_COUNT: {
-            return {...state, totalUsersCount: action.payload.totalCount}
+            return {...state, totalItemsCount: action.payload.totalCount}
         }
         case TOGGLE_IS_FETCHING: {
             return {...state, isFetching: action.payload.isFetching}
@@ -166,7 +166,8 @@ export const getUsers = (page: number, pageSize: number) => async (dispatch: Dis
     const data = await usersAPI.getUsers(page, pageSize)
     dispatch(toggleIsFetching(false))
     dispatch(setUsers(data.items))
-    dispatch(setTotalUsersCount(55))
+    // dispatch(setTotalUsersCount(55))
+    dispatch(setTotalUsersCount(data.totalCount))
 }
 
 
