@@ -7,16 +7,19 @@ import {maxLengthCreator, required} from '../../../utils/validators/validators';
 import {Textarea} from '../../common/FormsControls/FormsControls';
 
 
+export const MyPosts = React.memo((props: MyPostsPropsType) => {
 
-export const MyPosts = React.memo ((props: MyPostsPropsType) =>  {
+        // shouldComponentUpdate(nextProps: Readonly<MyPostsPropsType>, nextState: Readonly<MyPostsPropsType>): boolean {
+        //     return nextProps !== this.props || nextState !== this.state
+        // }
 
-    // shouldComponentUpdate(nextProps: Readonly<MyPostsPropsType>, nextState: Readonly<MyPostsPropsType>): boolean {
-    //     return nextProps !== this.props || nextState !== this.state
-    // }
+    // const time = ["two hours ago", "one hours ago"]
 
-        let postsElements = props.posts.map(el => <Post key={el.id}
-                                                             message={el.message}
-                                                             likesCount={el.likesCount}/>)
+        let postsElements = props.posts.map((el, index) => <Post key={el.id}
+                                                        message={el.message}
+                                                        likesCount={el.likesCount}
+                                                        time={el.time}
+        />)
 
 
         const addNewPost = (formData: AddNewPostFormType) => {
@@ -25,17 +28,18 @@ export const MyPosts = React.memo ((props: MyPostsPropsType) =>  {
         }
 
         return (
-            <div className={s.postsBlock}>
-                <h3>My posts</h3>
+            <div>
+                <div className={s.newPostsBlock}>
+                    <div className={s.myPosts}>Create post</div>
 
-                <AddPostFormRedux onSubmit={addNewPost}/>
-
+                    <AddPostFormRedux onSubmit={addNewPost}/>
+                </div>
                 <div className={s.posts}>
                     {postsElements}
                 </div>
             </div>
         );
-}
+    }
 )
 
 
@@ -43,20 +47,22 @@ type AddNewPostFormType = {
     newPostText: string
 }
 
-const maxLength10 = maxLengthCreator(10)
+const maxLength10 = maxLengthCreator(200)
 
 const AddNewPostForm: React.FC<InjectedFormProps<AddNewPostFormType>> = (props) => {
     return (
+
         <form onSubmit={props.handleSubmit}>
-            <div>
+            <div className={s.textarea}>
                 <Field component={Textarea}
                        placeholder={'Post Message'}
                        name={'newPostText'}
                        validate={[required, maxLength10]}
-                       className={s.area}/>
+                       className={s.area}
+                />
             </div>
             <div>
-                <button>Add post</button>
+                <button className={s.createPostBtn}>Add post</button>
             </div>
         </form>
     )

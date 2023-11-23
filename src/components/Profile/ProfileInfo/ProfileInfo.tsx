@@ -24,20 +24,14 @@ const ProfileInfo: React.FC<ProfileInfoType> = (props) => {
     }
 
     return (
-        <div>
+        <div className={s.profileInfoMain}>
             {/*<div>*/}
             {/*    <img src="https://photoclub.by/images/main37/378920_main.jpg" alt="image"/>*/}
             {/*</div>*/}
 
             <div className={s.descriptionBlock}>
-                <img src={props.profile.photos.small} alt={"image"}/>
-                {/*<div>{props.profile.aboutMe}</div>*/}
-                {/*<div>{props.profile.fullName}</div>*/}
-                {/*<div>{props.profile.contacts.facebook}</div>*/}
-                {/*<div>{props.profile.contacts.github}</div>*/}
-                {/*<div>{props.profile.contacts.instagram}</div>*/}
-                {/*<ProfileStatus status={props.status} updateStatus={props.updateStatus}/>*/}
-                <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus}/>
+                {/*<img src={props.profile.photos.small} alt={"image"}/>*/}
+                {/*<ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus}/>*/}
             </div>
         </div>
     );

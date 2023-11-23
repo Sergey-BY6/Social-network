@@ -1,7 +1,9 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import s from './Navbar.module.css'
-import {RootStateType} from '../../Redux/store';
+import {useSelector} from 'react-redux';
+import {AppStateType} from '../../Redux/redux-store';
+
 
 
 type NavBartype = {
@@ -12,8 +14,19 @@ type NavBartype = {
 
 
 const Navbar: React.FC<NavBartype> = (props) => {
+
+    const status = useSelector<AppStateType, string>(state => state.profilePage.status)
+
+
     return (
         <nav className={s.nav}>
+            <div>
+                <div className={s.itemImage}><img src="https://zamanilka.ru/wp-content/uploads/2023/06/ava-kotik-060623-1.jpg"
+                                                  alt="image"/></div>
+                {status}
+            </div>
+
+
             <div className={s.item}>
                 <NavLink to={'/profile'} activeClassName={s.activeLink}>Profile</NavLink>
             </div>

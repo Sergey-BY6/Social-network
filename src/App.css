@@ -1,8 +1,11 @@
 .app-wrapper {
     display: grid;
 
-    width: 1280px;
+    /*width: 1280px;*/
+    width: 100%;
     margin: 0 auto;
+    background-color: #edf7fb;
+
 
 
     grid-template-areas:
@@ -17,8 +20,11 @@
 
 
 .app-wrapper-content {
+    margin: 20px 20px 0 20px;
+    border-radius: 5px;
     grid-area: c;
-    background-color: cornflowerblue;
+    background-color: #edf7fb;
+    min-height: 100vh;
 }
 
 

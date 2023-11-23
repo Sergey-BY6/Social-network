@@ -3,8 +3,8 @@ import {addPostAC, deletePost, postsType, profileReducer} from './profileReducer
 
 let state = {
     posts: [
-        {id: 1, message: 'Hi, how are you?', likesCount: 12},
-        {id: 2, message: 'It\'s my first post', likesCount: 11},
+        {id: 1, message: 'Hi, how are you?', likesCount: 12, time: "two"},
+        {id: 2, message: 'It\'s my first post', likesCount: 11, time: "one"},
     ] as postsType[],
     // newPostText: '',
     profile: null,

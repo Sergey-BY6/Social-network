@@ -1,6 +1,9 @@
 .dialogs {
     display: grid;
     grid-template-columns: 2fr 10fr;
+    height: 35vh;
+    background-color: white;
+    border-radius: 5px;
 }
 
 

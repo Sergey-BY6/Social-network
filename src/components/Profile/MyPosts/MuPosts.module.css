@@ -1,12 +1,87 @@
 
 .posts {
-    margin-top: 10px;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    /*margin-top: 10px;*/
+}
+
+/*.createPostMain {*/
+/*    height: 300px;*/
+/*}*/
+
+.newPostsBlock {
+    /*padding: 10px;*/
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    position: relative;
+    background-color: white;
+    border-radius: 5px 5px 5px 5px;
+    height: 250px;
+}
+
+.myPosts {
+    color: #51595e;
+    font-weight: 700;
+    font-family: "Montserrat", sans-serif;
+    font-size: calc(16px + (18 - 16) * ((100vw - 320px) / (1920 - 320)));
+    line-height: 1.2;
+    margin: 15px 0 0 15px;
+}
+
+.area {
+    position: absolute;
+    top: 100px;
+    left: 50px;
+/*width: 500px;*/
+
+
+    float: left;
+    width: 80%;
+    /*border: none;*/
+    border-radius: 6px 6px 6px 6px;
+    /*border: 1px;*/
+    padding: 10px;
+    resize: none;
+    overflow: auto;
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+.createPostBtn {
+    /*position: absolute;*/
+    background-color: #0389c9;
+    border: medium none;
+    border-radius: 5px;
+    color: #fff;
+    font-weight: 500;
+    padding: 5px;
+    width: 20%;
+    transition: all 0.2s linear 0s;
+    cursor: pointer;
+    text-transform: none;
+    overflow: visible;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    margin-bottom: 20px;
+    margin-left: 50px;
 }
 
 
 
+/*.addPosts {*/
+/*    border-radius: 15px;*/
+/*    background-color: red;*/
+/*}*/
 
-.postsBlock {
-padding: 10px;
-}
 
+/*.topBlock {*/
+/*    border-radius: 15px;*/
+/*    background-color: green;*/
+/*}*/

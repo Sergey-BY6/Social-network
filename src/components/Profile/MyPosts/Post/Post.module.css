@@ -1,11 +1,82 @@
 
-.item {
-    color: greenyellow;
+.itemMain {
+    background-color: #edf7fb;
+    height: 50px;
+    /*color: red;*/
 }
 
+.item {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    color: #51595e;
+    padding-top: 150px;
+    background-color: white;
+    border-radius: 5px;
+}
 
+.itemImageName {
+    display: flex;
+}
 .item img {
-width: 70px;
-height: 70px;
+    display: flex;
+    position: absolute;
+    width: 50px;
+    height: 50px;
     border-radius: 37px;
+
+    top: 12px;
+    left: 12px;
+}
+
+.itemName {
+    position: absolute;
+    top: 18px;
+    left: 85px;
+    font-family: "Montserrat", sans-serif;
+    color: #51595e;
+    text-transform: capitalize;
+    font-weight: 600;
+    margin-bottom: 5px;
+    line-height: 1.2;
+}
+
+.itemPostTime {
+    position: absolute;
+    top: 38px;
+    left: 87px;
+    /*text-transform: capitalize;*/
+    color: #647589;
+    font-weight: 500;
+    font-family: "Roboto", sans-serif;
+    font-size: calc(11px + (12 - 11) * ((100vw - 320px) / (1920 - 320)));
+    line-height: 1.2;
+}
+
+.itemMessage {
+    box-sizing: border-box;
+    position: absolute;
+    width: 300px;
+    top: 95px;
+    left: 70px;
+    font-size: calc(14px + (16 - 14) * ((100vw - 320px) / (1920 - 320)));
+    color: #51595e;
+    margin-top: 10px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    /*margin: 0;*/
+    line-height: 1.4;
+
+}
+
+.itemLike {
+    padding: 0 0 10px 10px;
+    cursor: pointer;
+    font-size: calc(11px + (13 - 11) * ((100vw - 320px) / (1920 - 320)));
+    font-weight: 700;
+    font-family: "Montserrat", sans-serif;
+    color: #647589;
+    text-transform: capitalize;
+    line-height: 1.2;
+    text-align: -webkit-match-parent;
 }

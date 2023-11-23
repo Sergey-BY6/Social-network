@@ -21,9 +21,7 @@ const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsCo
 const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'));
 
 
-type AppType = {
-    // store: AppStateType   убрал передачу store через App
-}
+
 
 class App extends React.Component<AppPropsType> {
 

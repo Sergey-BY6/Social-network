@@ -5,6 +5,7 @@ export type postsType = {
     id: number
     message: string
     likesCount: number
+    time: string
 }
 
 export type profilePageType = {
@@ -50,8 +51,8 @@ const DELETE_POST = 'DELETE_POST'
 
 let initialState = {
     posts: [
-        {id: 1, message: 'Hi, how are you?', likesCount: 12},
-        {id: 2, message: 'It\'s my first post', likesCount: 11},
+        {id: 1, message: 'Hi, how are you?', likesCount: 12, time: "two hours ago"},
+        {id: 2, message: 'It\'s my first post', likesCount: 11, time: "one hours ago"},
     ] as postsType[],
     // newPostText: '',
     profile: null,
@@ -67,7 +68,7 @@ export type InitialStateType = typeof initialState
 export const profileReducer = (state: InitialStateType = initialState, action: MainType): InitialStateType => {
     switch (action.type) {
         case ADD_POST: {
-            let messagePost: postsType = {id: 5, message: action.newPostText, likesCount: 0}
+            let messagePost: postsType = {id: 5, message: action.newPostText, likesCount: 0, time: "now"}
             return {
                 ...state, posts: [...state.posts, messagePost],
                 // newPostText: ""

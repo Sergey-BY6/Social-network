@@ -14,7 +14,7 @@ const FormControl: React.FC<any> = (props) => {
                 {props.children}
             </div>
             <div>
-                {hasError && <span>{meta.error}</span>}
+                {hasError && <div className={s.formControlError}>{meta.error}</div>}
             </div>
         </div>
     )

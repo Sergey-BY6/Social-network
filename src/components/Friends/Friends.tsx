@@ -1,11 +1,12 @@
 import React from 'react';
+import s from "./Friends.module.css"
 
 
 
 
 const Friends = () => {
     return (
-        <div>
+        <div className={s.mainFriends}>
           My friends
         </div>
     );

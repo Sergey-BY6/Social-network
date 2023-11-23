@@ -1,3 +1,10 @@
+.usersMain {
+    background-color: white;
+    border-radius: 5px;
+}
+
+
+
 .userPhoto {
     width: 100px;
     height: 100px;
