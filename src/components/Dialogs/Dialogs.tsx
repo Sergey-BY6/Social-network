@@ -1,21 +1,27 @@
-import React, {ChangeEvent} from 'react';
+import React, {ChangeEvent, useState} from 'react';
 import s from './Dialogs.module.css'
 import DialogItem from './DialogItem/DialogsItem';
 import Message from './Message/Message';
 import {DialogsPropsType} from './DialogsContainer';
-import { AddMessageFormRedux, AddMessageFormType } from './addMessageForm/addMessageForm';
+import {AddMessageFormRedux, AddMessageFormType} from './addMessageForm/addMessageForm';
+import {Route, useLocation} from 'react-router-dom';
 
 
 const Dialogs: React.FC<DialogsPropsType> = (props) => {
 
-    let dialogElements = props.dialogs.map(el => <DialogItem key={el.id} name={el.name} id={el.id} avatar={el.avatar}/>)
+    let dialogElements = props.dialogs.map(el => <DialogItem key={el.id} name={el.name} id={el.id} avatar={el.avatar}
+                                                             status={el.status}/>)
 
-    let messageElements = props.messages.map(el => <Message key={el.id} message={el.message}/>)
+    const messagesFunc = (block: string) => {
+        let messageForDialog = props.messages[block].map(el => <Message key={el.id} message={el.message}/>)
+        return messageForDialog.length > 0 ? <div>{messageForDialog}</div> : <div>No message</div>
+    }
 
+    const location = useLocation()
+    const path = location.pathname
 
     const addNewMessage = (formData: AddMessageFormType) => {
-        // console.log(formData.newMessageBody)
-        props.addMessage(formData.newMessageBody)
+            props.addMessage(path, formData.newMessageBody)
     }
 
 
@@ -25,7 +31,13 @@ const Dialogs: React.FC<DialogsPropsType> = (props) => {
                 {dialogElements}
             </div>
             <div className={s.messages}>
-                {messageElements}
+                {/*{messageElements}*/}
+                <Route path={'/dialogs/1'} render={() => messagesFunc("/dialogs/1")}/>
+                <Route path={'/dialogs/2'} render={() => messagesFunc("/dialogs/2")}/>
+                <Route path={'/dialogs/3'} render={() => messagesFunc("/dialogs/3")}/>
+                <Route path={'/dialogs/4'} render={() => messagesFunc("/dialogs/4")}/>
+                <Route path={'/dialogs/5'} render={() => messagesFunc("/dialogs/5")}/>
+                <Route path={'/dialogs/6'} render={() => messagesFunc("/dialogs/6")}/>
 
                 <AddMessageFormRedux onSubmit={addNewMessage}/>
 
@@ -36,5 +48,6 @@ const Dialogs: React.FC<DialogsPropsType> = (props) => {
 };
 
 export default Dialogs;
+
 
 

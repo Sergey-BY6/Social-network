@@ -1,9 +1,9 @@
 import React from 'react';
 import {
     addMessageAC,
-    dialogsType,
-    InitialStateType,
-    messagesType,
+    dialogsType, MessageFullType,
+    // InitialStateType, messageFullType,
+    // messagesType,
 } from '../../Redux/dialogsReducer';
 import Dialogs from './Dialogs';
 import {connect} from 'react-redux';
@@ -17,14 +17,14 @@ import {mapStateToPropsForRedirectType, withAuthRedirect} from '../../hoc/withAu
 type MapStatePropsType = {
     // dialogsPage: InitialStateType
     dialogs: dialogsType[]
-    messages: messagesType[]
+    messages: MessageFullType
     // newMessageText: string
 }
 
 
 type MapDispatchPropsType = {
     // updateNewMessageText: (eText: string) => void
-    addMessage: (newMessageBody: string) => void
+    addMessage: (block: string, newMessageBody: string) => void
 }
 
 export type DialogsPropsType = MapStatePropsType & MapDispatchPropsType
@@ -44,8 +44,8 @@ const mapDispatchToProps = (dispatch: Dispatch): MapDispatchPropsType => {
         // updateNewMessageText: (eText: string) => {
         //     dispatch(updateNewMessageTextAC(eText))
         // },
-        addMessage: (newMessageBody: string) => {
-            dispatch(addMessageAC(newMessageBody))
+        addMessage: (block: string, newMessageBody: string) => {
+            dispatch(addMessageAC(block, newMessageBody))
         },
     }
 }

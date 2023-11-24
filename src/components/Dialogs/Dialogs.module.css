@@ -1,26 +1,82 @@
 .dialogs {
     display: grid;
     grid-template-columns: 2fr 10fr;
-    height: 35vh;
+    /*height: 35vh;*/
     background-color: white;
     border-radius: 5px;
 }
 
 
 .dialogsItems {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     padding: 10px;
+
+    /*border: 1px solid black;*/
 }
 
 .dialogsItems .active {
+    display: flex;
     color: gold;
+    border-bottom: 1px solid rgba(54,119,81,0.21);
+    /*border-bottom: 1px solid black;*/
 }
 
 
 .dialogsItems img {
-    width: 35px;
-    height: 35px;
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
+    margin: 8px 0 3px 0;
 }
+
+.dialogsName a {
+    margin: 7px 0 0 5px;
+    font-family: "Montserrat", sans-serif;
+    color: #51595e;
+    text-transform: capitalize;
+    font-weight: 600;
+    /*margin-bottom: 5px;*/
+    font-size: calc(13px + (14 - 13) * ((100vw - 320px) / (1920 - 320)));
+    line-height: 1.2;
+    cursor: pointer;
+    text-decoration: none;
+
+}
+
+.dialogsName a.activeLink{
+    margin: 7px 0 0 5px;
+    font-family: "Montserrat", sans-serif;
+    color: #2bc60c;
+    text-transform: capitalize;
+    font-weight: 600;
+    /*margin-bottom: 5px;*/
+    font-size: calc(13px + (14 - 13) * ((100vw - 320px) / (1920 - 320)));
+    line-height: 1.2;
+    cursor: pointer;
+    text-decoration: none;
+
+}
+
+
+
+.nameStatusBlock {
+    display: flex;
+    flex-direction: column;
+
+}
+
+
+.status {
+margin: 0 0 7px 7px;
+    color: #647589;
+    font-weight: 500;
+    font-family: "Roboto", sans-serif;
+    font-size: calc(11px + (12 - 11) * ((100vw - 320px) / (1920 - 320)));
+    line-height: 1.2;
+}
+
 
 
 
@@ -28,17 +84,19 @@
 
 
 .messages {
-
-
-
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     padding: 10px;
+    /*height: 135%;*/
+
 }
 
 .messages .message {
 
 
 
-margin-top: 20px;
+/*margin-top: 20px;*/
 }
 
 
