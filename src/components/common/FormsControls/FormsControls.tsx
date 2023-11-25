@@ -20,10 +20,31 @@ const FormControl: React.FC<any> = (props) => {
     )
 }
 
+
+const FormControlInside: React.FC<any> = (props) => {
+    const {input, meta, child, ...restProps} = props
+    const hasError = meta.touched && meta.error
+
+    return (
+        <div className={s.formControl + ' ' + (hasError ? s.error : '')}>
+            <div>
+                {props.children}
+            </div>
+        </div>
+    )
+}
+
 export const Textarea: React.FC<any> = (props) => {
     const {input, meta, ...restProps} = props
     return (
         <FormControl {...props}><textarea {...input} {...restProps}/></FormControl>
+    )
+}
+
+export const TextareaInside: React.FC<any> = (props) => {
+    const {input, meta, ...restProps} = props
+    return (
+        <FormControlInside {...props}><textarea {...input} {...restProps}/></FormControlInside>
     )
 }
 

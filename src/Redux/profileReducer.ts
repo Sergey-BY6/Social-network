@@ -43,7 +43,6 @@ export type ProfileType = {
 
 
 const ADD_POST = 'ADD-POST'
-// const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT"
 const SET_USER_PROFILE = 'SET_USER_PROFILE'
 const TOGGLE_PROFILE_PAGE = 'TOGGLE_PROFILE_PAGE'
 const SET_STATUS = 'SET_STATUS'
@@ -51,8 +50,8 @@ const DELETE_POST = 'DELETE_POST'
 
 let initialState = {
     posts: [
-        {id: 1, message: 'Hi, how are you?', likesCount: 12, time: "two hours ago"},
-        {id: 2, message: 'It\'s my first post', likesCount: 11, time: "one hours ago"},
+        {id: 2, message: 'Hi, how are you?',  likesCount: 11, time: "one hours ago"},
+        {id: 1, message: 'It\'s my first post', likesCount: 12, time: "two hours ago"},
     ] as postsType[],
     // newPostText: '',
     profile: null,
@@ -70,13 +69,9 @@ export const profileReducer = (state: InitialStateType = initialState, action: M
         case ADD_POST: {
             let messagePost: postsType = {id: 5, message: action.newPostText, likesCount: 0, time: "now"}
             return {
-                ...state, posts: [...state.posts, messagePost],
-                // newPostText: ""
+                ...state, posts: [messagePost ,...state.posts ],
             }
         }
-        // case UPDATE_NEW_POST_TEXT: {
-        //   return {...state, newPostText: action.newPostText}
-        // }
         case SET_USER_PROFILE: {
             return {...state, profile: action.payload.profile}
         }
@@ -98,15 +93,6 @@ export const profileReducer = (state: InitialStateType = initialState, action: M
         }
     }
 }
-
-
-// export type updateNewPostTextACType = ReturnType<typeof updateNewPostTextAC>
-// export const updateNewPostTextAC = (newPostText: string) => {
-//     return {
-//         type: UPDATE_NEW_POST_TEXT,
-//         newPostText: newPostText
-//     } as const
-// }
 
 export type addPostACType = ReturnType<typeof addPostAC>
 export const addPostAC = (newPostText: string) => {

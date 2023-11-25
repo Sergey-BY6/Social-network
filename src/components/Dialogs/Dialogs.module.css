@@ -1,7 +1,6 @@
 .dialogs {
     display: grid;
     grid-template-columns: 2fr 10fr;
-    /*height: 35vh;*/
     background-color: white;
     border-radius: 5px;
 }
@@ -13,14 +12,12 @@
     justify-content: space-between;
     padding: 10px;
 
-    /*border: 1px solid black;*/
 }
 
 .dialogsItems .active {
     display: flex;
     color: gold;
-    border-bottom: 1px solid rgba(54,119,81,0.21);
-    /*border-bottom: 1px solid black;*/
+    border-bottom: 1px solid rgba(54, 119, 81, 0.21);
 }
 
 
@@ -37,7 +34,6 @@
     color: #51595e;
     text-transform: capitalize;
     font-weight: 600;
-    /*margin-bottom: 5px;*/
     font-size: calc(13px + (14 - 13) * ((100vw - 320px) / (1920 - 320)));
     line-height: 1.2;
     cursor: pointer;
@@ -45,20 +41,18 @@
 
 }
 
-.dialogsName a.activeLink{
+.dialogsName a.activeLink {
     margin: 7px 0 0 5px;
     font-family: "Montserrat", sans-serif;
     color: #2bc60c;
     text-transform: capitalize;
     font-weight: 600;
-    /*margin-bottom: 5px;*/
     font-size: calc(13px + (14 - 13) * ((100vw - 320px) / (1920 - 320)));
     line-height: 1.2;
     cursor: pointer;
     text-decoration: none;
 
 }
-
 
 
 .nameStatusBlock {
@@ -69,7 +63,7 @@
 
 
 .status {
-margin: 0 0 7px 7px;
+    margin: 0 0 7px 7px;
     color: #647589;
     font-weight: 500;
     font-family: "Roboto", sans-serif;
@@ -78,40 +72,92 @@ margin: 0 0 7px 7px;
 }
 
 
-
-
-
-
+.messagesBlock {
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(54, 119, 81, 0.21);
+    border-radius: 5px 5px 5px 5px;
+    background-color: #f8f9fa;
+    height: 300px;
+    margin-bottom: 25px;
+}
 
 .messages {
     display: flex;
+    position: relative;
     flex-direction: column;
     justify-content: space-between;
     padding: 10px;
-    /*height: 135%;*/
-
 }
 
-.messages .message {
-
-
-
-/*margin-top: 20px;*/
+.message {
+    margin: 10px 0 0 15px;
+    background: #dae7f1;
+    border-radius: 5px;
+    font-size: 14px;
+    line-height: 20px;
+    padding: 8px 7px;
+    color: #51595e;
+    letter-spacing: 0.1px;
+    list-style: outside none none;
+    direction: ltr;
+    max-width: 60%;
 }
 
+.noMessage {
+    height: 300px;
+    border: 1px solid rgba(54, 119, 81, 0.21);
+    border-radius: 5px 5px 5px 5px;
+    margin-bottom: 25px;
+}
+
+.noMessegaText{
+margin: 10px 0 0 10px;
+}
+
+.sendMessageBlock {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+}
+
+
+.textareaBlock {
+    height: 80px;
+}
 
 
 .btnAdd {
-    background-color: hotpink;
-    color: white;
-    width: 45px;
-    height: 22px;
-    border: 2px solid black;
-    border-radius: 3px;
-    margin: 0px 0 5px 5px;
+    position: absolute;
+    top: 32px;
+    left: 350px;
+    background-color: #0389c9;
+    border: medium none;
+    border-radius: 5px;
+    color: #fff;
+    font-weight: 500;
+    padding: 5px;
+    width: 15%;
+    transition: all 0.2s linear 0s;
+    cursor: pointer;
+    text-transform: none;
+    overflow: visible;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    /*margin: 32px 0 0 10px;*/
 }
 
 
 .area {
-    margin-top: 10px;
+    width: 40%;
+    border-radius: 6px 6px 6px 6px;
+    padding: 10px;
+    resize: none;
+    overflow: auto;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
 }
