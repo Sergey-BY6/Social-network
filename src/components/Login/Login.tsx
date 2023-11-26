@@ -7,6 +7,7 @@ import {login} from '../../Redux/auth-reducer';
 import {Redirect} from 'react-router-dom';
 import {AppStateType} from '../../Redux/redux-store';
 import s from './../common/FormsControls/FormsControls.module.css'
+import d from './Login.module.css'
 
 type FormDataType = {
     email: string
@@ -17,23 +18,10 @@ type FormDataType = {
 export const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
     return (
         <form onSubmit={props.handleSubmit}>
-            {/*<div>*/}
-            {/*    <Field placeholder={'Email'} name={'email'} component={Input}*/}
-            {/*           validate={[required]}*/}
-            {/*    />*/}
-            {/*</div>*/}
-            {/*<div>*/}
-            {/*    <Field placeholder={'Password'} name={'password'} component={Input}*/}
-            {/*           validate={[required]}*/}
-            {/*    />*/}
-            {/*</div>*/}
-            {/*<div>*/}
-            {/*    <Field component={Input} name={'rememberMe'} type={'checkbox'}*/}
-            {/*    /> <span>remember me</span>*/}
-            {/*</div>*/}
             {createField('Email', 'email', [required], Input)}
             {createField('Password', 'password', [required], Input)}
             {createField(null,'rememberMe', [], Input, {type: "checkbox"}, "rememberMe")}
+
             <div>
                 {props.error &&
                     <div className={s.formSummeryError}>
@@ -42,7 +30,7 @@ export const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
                 }
             </div>
             <div>
-                <button>Log in</button>
+                <button className={s.btn}>Login</button>
             </div>
         </form>
     );
@@ -83,9 +71,9 @@ const Login: React.FC<LoginPropsType> = (props) => {
     }
 
     return (
-        <div>
-            <h1>Login</h1>
-            <LoginReduxForm onSubmit={onSubmit}/>
+        <div className={d.loginMain}>
+            <div className={d.loginTitle}>Login</div>
+            <div className={s.formControlBlock}><LoginReduxForm onSubmit={onSubmit}/></div>
         </div>
     );
 };

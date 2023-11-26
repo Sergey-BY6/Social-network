@@ -6,6 +6,7 @@ import s from "./Preloader.module.css"
 type PreloaderPropType = {
     isFetching: boolean
     size?: string
+    margin?: string
 }
 
 const Preloader: React.FC<PreloaderPropType> = (props) => {
@@ -18,7 +19,7 @@ const Preloader: React.FC<PreloaderPropType> = (props) => {
                     <div className={s.preloader}>
                         {props.isFetching ?
                             <img src={preloader} alt={"image"}
-                                 style={{width: "50px", height: "50px", marginLeft: "750px"}}/>
+                                 style={{width: "50px", height: "50px", marginLeft: props.margin}}/>
                             : null}
                     </div>
                     :  <div className={s.preloader}>

@@ -11,6 +11,7 @@ type ProfileInfoType = {
     isFetching: boolean
     status: string
     updateStatus: (status: string) => void
+    margin?: string
 }
 
 
@@ -19,7 +20,7 @@ const ProfileInfo: React.FC<ProfileInfoType> = (props) => {
 // debugger
     if(!props.profile) {
         return (
-            <Preloader isFetching={props.isFetching}/>
+            <Preloader isFetching={props.isFetching} size={"small"} margin={props.margin}/>
         )
     }
 

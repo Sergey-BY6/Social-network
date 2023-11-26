@@ -14,7 +14,6 @@ type ProfilePropsType = {
 }
 
 const Profile: React.FC<ProfilePropsType> = (props) => {
-    // console.log(props.updateStatus)
     return (
         <div className={s.profileMain}>
             {/*<div><ProfileInfo profile={props.profile}*/}

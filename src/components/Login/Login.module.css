@@ -1,0 +1,17 @@
+.loginMain {
+    background-color: white;
+    border-radius: 5px;
+    width: 350px;
+    height: 330px;
+    padding: 10px;
+    position: relative;
+}
+
+
+.loginTitle {
+    text-transform: capitalize;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    font-size: 18px;
+    line-height: 1.2;
+}

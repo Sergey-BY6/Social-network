@@ -1,7 +1,8 @@
 
-.formControl.error input{
-    border: 1px solid red;
+.formControl.error input {
+    border: 2px solid red;
 }
+
 .formControl.error textarea {
     /*border: 1px solid red;*/
 }
@@ -23,4 +24,53 @@
     padding: 5px;
     color: red;
     width: 150px;
+}
+
+
+.createFieldMain {
+    margin: 0px 0px 0px 0px;
+    height: 65px;
+    display: flex;
+}
+
+.formControlBlock {
+    margin: 80px 0 0 20px;
+}
+
+.createField {
+    width: 250px;
+    height: 30px;
+    border-radius: 8px;
+    border: 1px solid black;
+    resize: none;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    margin: 0px 0 0 0px;
+}
+
+
+
+.rememberMe {
+    margin: 3px 15px 0 0px;
+    height: 18px;
+    width: 18px;
+}
+
+.btn {
+    background-color: #0389c9;
+    border: medium none;
+    border-radius: 5px;
+    color: #fff;
+    font-weight: 500;
+    padding: 5px;
+    width: 25%;
+    transition: all 0.2s linear 0s;
+    cursor: pointer;
+    text-transform: none;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    position: absolute;
+    top: 288px;
 }

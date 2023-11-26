@@ -59,12 +59,13 @@ export const Input: React.FC<any> = (props) => {
 
 export const createField = (placeholder: string | null, name: string, validators: Validator[], component: React.FC, props: any = {}, text: string = '') => {
     return (
-        <div>
+        <div className={s.createFieldMain}>
             <Field placeholder={placeholder}
                    name={name}
                    validate={validators}
                    component={Input}
                    {...props}
+                className={name === 'rememberMe' ? s.rememberMe : s.createField}
             /> {text}
         </div>
     )

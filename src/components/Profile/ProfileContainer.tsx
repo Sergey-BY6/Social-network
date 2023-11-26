@@ -22,9 +22,10 @@ export class ProfileContainer extends React.Component<ProfilePropsType> {
                 this.props.history.push('/login')
             }
         }
-        this.props.toggleProfilePage(true)
-        this.props.getUserProfile(userId)
-        this.props.getStatus(userId)
+        //перенес в navbar
+        // this.props.toggleProfilePage(true)
+        // this.props.getUserProfile(userId)
+        // this.props.getStatus(userId)
     }
 
 

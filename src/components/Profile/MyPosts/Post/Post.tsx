@@ -16,9 +16,10 @@ const Post: React.FC<PostPropstype> = (props) => {
             <div className={s.itemMain}></div>
             <div className={s.item}>
                 {/*<div className={s.itemImage}><img src="https://uprostim.com/wp-content/uploads/2021/03/image113-55.jpg"*/}
-                    <div className={s.itemImage}><img src="https://zamanilka.ru/wp-content/uploads/2023/06/ava-kotik-060623-1.jpg"
-
-                                                  alt="image"/></div>
+                <div className={s.itemImage}>
+                    <img src="https://zamanilka.ru/wp-content/uploads/2023/06/ava-kotik-060623-1.jpg"
+                         alt="image"/>
+                </div>
                 <div className={s.itemName}>Sergey Babich</div>
                 <div className={s.itemPostTime}>{props.time}</div>
                 <div className={s.itemMessage}>{props.message}</div>
