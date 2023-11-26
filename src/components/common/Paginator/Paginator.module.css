@@ -1,16 +1,58 @@
 .paginator {
-    margin: 10px;
+display: flex;
+    height: 50px;
+    /*border: 1px solid green;*/
+    margin: 0 0 0 15px;
 }
+.pages {
+    margin: 15px 0 0 0px;
+    font-size: calc(11px + (13 - 11) * ((100vw - 320px) / (1920 - 320)));
+    font-weight: 700;
+    font-family: "Montserrat", sans-serif;
+}
+
 
 .pageNumber {
     margin: 3px;
     padding: 4px;
-    border: 1px solid grey;
+    /*border: 1px solid grey;*/
+    cursor: pointer;
+    color: #647589;
+    text-transform: capitalize;
+    line-height: 1.2;
+    font-size: 15px;
 }
+
 
 .selectedPage {
     margin: 3px;
     padding: 4px;
-    border: 1px solid grey;
+    /*border: 1px solid grey;*/
+    cursor: pointer;
+    color: #fa6342;
+    text-transform: capitalize;
+    line-height: 1.2;
+    font-size: 15px;
     font-weight: bold;
+}
+
+.btn {
+    background-color: #0389c9;
+    border: medium none;
+    border-radius: 5px;
+    color: #fff;
+    font-weight: 500;
+    padding: 5px;
+    width: 60px;
+    height: 30px;
+    transition: all 0.2s linear 0s;
+    cursor: pointer;
+    overflow: visible;
+    margin: 10px 0 5px 5px;
+
+    color: rgba(255, 255, 255, 0.9);
+    text-transform: capitalize;
+    font-family: "Roboto", sans-serif;
+    font-size: calc(14px + (16 - 14) * ((100vw - 320px) / (1920 - 320)));
+    line-height: 1.2;
 }

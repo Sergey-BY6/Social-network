@@ -14,14 +14,14 @@ type ProfilePropsType = {
 }
 
 const Profile: React.FC<ProfilePropsType> = (props) => {
-
+    // console.log(props.updateStatus)
     return (
         <div className={s.profileMain}>
-            <div><ProfileInfo profile={props.profile}
-                         isFetching={props.isFetching}
-                         status={props.status}
-                         updateStatus={props.updateStatus}
-            /></div>
+            {/*<div><ProfileInfo profile={props.profile}*/}
+            {/*             isFetching={props.isFetching}*/}
+            {/*             status={props.status}*/}
+            {/*             updateStatus={props.updateStatus}*/}
+            {/*/></div>*/}
             <MyPostsContainer/>
 
         </div>

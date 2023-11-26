@@ -1,13 +1,90 @@
 .usersMain {
     background-color: white;
     border-radius: 5px;
+    max-width: 800px;
+}
+
+.usersPage {
+    margin: 30px 0 0 0;
+    /*border: 1px solid red;*/
+}
+
+.user {
+    margin: 15px 0 20px 20px;
+    display: flex;
+    border-bottom: 1px solid rgba(54, 119, 81, 0.21);
+    padding-bottom: 8px;
+}
+
+
+.userPhoto {
+    width: 70px;
+    height: 70px;
+}
+
+.followUnfollowMain {
+    width: 72px;
+}
+
+.nameStatusUserMain {
+    margin: 0 0 0 15px;
 }
 
 
 
-.userPhoto {
-    width: 100px;
-    height: 100px;
+.nameUser {
+    font-family: "Montserrat", sans-serif;
+    color: #51595e;
+    text-transform: capitalize;
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: 5px;
+    line-height: 1.2;
+}
+
+.statusUser {
+    color: #647589;
+    font-weight: 500;
+    font-family: "Roboto", sans-serif;
+    font-size: 14px;
+    line-height: 1.2;
+}
+
+
+.followBtn {
+    background-color: #0389c9;
+    border: medium none;
+    border-radius: 5px;
+    color: #fff;
+    font-weight: 500;
+    width: 72px;
+    height: 28px;
+    transition: all 0.2s linear 0s;
+    cursor: pointer;
+    overflow: visible;
+    color: rgba(255, 255, 255, 0.9);
+    text-transform: capitalize;
+    font-family: "Roboto", sans-serif;
+    font-size: calc(14px + (16 - 14) * ((100vw - 320px) / (1920 - 320)));
+    line-height: 1.2;
+}
+
+.onFollowBtn {
+    background-color: #0389c9;
+    border: medium none;
+    border-radius: 5px;
+    color: #fff;
+    font-weight: 500;
+    width: 68px;
+    height: 28px;
+    transition: all 0.2s linear 0s;
+    cursor: pointer;
+    overflow: visible;
+    color: rgba(255, 255, 255, 0.9);
+    text-transform: capitalize;
+    font-family: "Roboto", sans-serif;
+    font-size: calc(14px + (16 - 14) * ((100vw - 320px) / (1920 - 320)));
+    line-height: 1.2;
 }
 
 /*.selectPage {*/

@@ -11,7 +11,7 @@ import Dialogs from '../Dialogs/Dialogs';
 
 // type ProfilePropsType = {}
 
-class ProfileContainer extends React.Component<ProfilePropsType> {
+export class ProfileContainer extends React.Component<ProfilePropsType> {
 
     componentDidMount() {
         let userId = this.props.match.params.userId

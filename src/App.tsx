@@ -15,10 +15,11 @@ import {compose} from 'redux';
 import {initializeApp} from './Redux/app-reducer';
 import Preloader from './components/common/Preloader/Preloader';
 import {WithSuspense} from './hoc/withSuspense';
+import ProfileContainer from './components/Profile/ProfileContainer';
 
 
 const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
-const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'));
+// const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'));
 
 
 
@@ -37,11 +38,10 @@ class App extends React.Component<AppPropsType> {
             <div className="app-wrapper">
                 <HeaderContainer/>
                 <Navbar/>
-                {/*navbar с отрисвкой друзей*/}
-                {/*<Navbar state={props.store}/>*/}
                 <div className="app-wrapper-content">
                     <Route path={'/dialogs'} render={WithSuspense(DialogsContainer)}/>
-                    <Route path={'/profile/:userId?'} render={WithSuspense(ProfileContainer)}/>
+                    {/*<Route path={'/profile/:userId?'} render={WithSuspense(ProfileContainer)}/>*/}
+                    <Route path={'/profile/:userId?'} render={() => <ProfileContainer/>}/>
 
                     <Route path={'/news'} render={() => <News/>}/>
                     <Route path={'/music'} render={() => <Music/>}/>

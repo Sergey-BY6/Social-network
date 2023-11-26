@@ -2,4 +2,7 @@
     background-color: white;
     border-radius: 5px;
     min-height: 35vh;
+    max-width: 800px;
+    height: 270px;
+    padding: 10px;
 }

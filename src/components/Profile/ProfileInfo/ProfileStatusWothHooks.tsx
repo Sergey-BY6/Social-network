@@ -1,5 +1,8 @@
 import React, {ChangeEvent, useEffect, useState} from 'react'
 import s from './ProfileInfo.module.css'
+import {useDispatch} from 'react-redux';
+import {useAppDispatch} from '../../../Redux/redux-store';
+import {updateStatus} from '../../../Redux/profileReducer';
 
 type ProfileStatusType = {
     status: string
@@ -8,9 +11,9 @@ type ProfileStatusType = {
 
 
 const ProfileStatusWithHooks: React.FC<ProfileStatusType> = (props) => {
-
     const [editMode, setEditMode] = useState<boolean>(false)
     const [status, setStatus] = useState<string>(props.status)
+    const dispatch = useAppDispatch()
 
     useEffect (() => {
         setStatus(props.status)
@@ -23,7 +26,7 @@ const ProfileStatusWithHooks: React.FC<ProfileStatusType> = (props) => {
 
     const deactivateEditModeHandler = () => {
         setEditMode(false)
-        props.updateStatus(status)
+        dispatch(updateStatus(status))
     }
 
     const onChangeStatusHandler = (e: ChangeEvent<HTMLInputElement>) => {

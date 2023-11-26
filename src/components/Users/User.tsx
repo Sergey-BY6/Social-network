@@ -5,7 +5,6 @@ import {UsersType} from '../../Redux/usersReducer';
 import {NavLink} from 'react-router-dom';
 
 
-
 type UserPropsType = {
     user: UsersType
     follow: (userId: number) => void
@@ -19,8 +18,8 @@ export const User: React.FC<UserPropsType> = (props) => {
     let user = props.user
 
     return (
-        <div>
-            <span>
+        <div className={s.user}>
+            <span className={s.followUnfollowMain}>
                 <div>
                     <NavLink to={'/profile/' + user.id}>
                         <img src={user.photos.small !== null ? user.photos.small : userPhoto}
@@ -30,22 +29,28 @@ export const User: React.FC<UserPropsType> = (props) => {
                         </div>
                 <div>
                     {user.followed
-                        ? <button disabled={props.followingInProgress.some(id => id === user.id)}
-                                  onClick={() => props.unfollow(user.id)}>UnFollow</button>
-                        : <button disabled={props.followingInProgress.some(id => id === user.id)}
-                                  onClick={() => props.follow(user.id)}>Follow</button>
+                        ? <button
+                            disabled={props.followingInProgress.some(id => id === user.id)}
+                            onClick={() => props.unfollow(user.id)}
+                            className={s.followBtn}
+                        >Unfollow</button>
+                        : <button
+                            disabled={props.followingInProgress.some(id => id === user.id)}
+                            onClick={() => props.follow(user.id)}
+                            className={s.onFollowBtn}
+                        >Follow</button>
                     }
                 </div>
             </span>
-            <span>
+            <span className={s.nameStatusUserMain}>
                 <span>
-                    <div>{user.name}</div>
-                    <div>{user.status}</div>
-                </span>
-                <span>
-                    <div>{'el.location.country'}</div>
-                    <div>{'el.location.city'}</div>
-                </span>
+                    <div className={s.nameUser}>{user.name}</div>
+                    <div className={s.statusUser}>{user.status}</div>
+                </span >
+                {/*<span>*/}
+                {/*    <div>{'el.location.country'}</div>*/}
+                {/*    <div>{'el.location.city'}</div>*/}
+                {/*</span>*/}
             </span>
         </div>
     )

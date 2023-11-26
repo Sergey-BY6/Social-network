@@ -2,7 +2,7 @@ import React from 'react';
 import {InitialStateType} from '../../Redux/usersReducer';
 import {Paginator} from '../common/Paginator/Paginator';
 import {User} from './User';
-import s from "./Users.module.css"
+import s from './Users.module.css'
 
 
 type UsersPropsType = {
@@ -27,7 +27,7 @@ const Users: React.FC<UsersPropsType> = (props) => {
                        currentPage={props.currentPage}
                        onPageChanged={props.onPageChanged}
             />
-            <div>
+            <div className={s.usersPage}>
                 {
                     props.usersPage.users.map(el => <User key={el.id}
                                                           user={el}

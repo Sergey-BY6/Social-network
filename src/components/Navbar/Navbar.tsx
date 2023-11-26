@@ -1,9 +1,11 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 import s from './Navbar.module.css'
-import {useSelector} from 'react-redux';
-import {AppStateType} from '../../Redux/redux-store';
-
+import {useDispatch, useSelector} from 'react-redux';
+import {AppStateType, useAppDispatch} from '../../Redux/redux-store';
+import ProfileStatusWithHooks from '../Profile/ProfileInfo/ProfileStatusWothHooks';
+import {ProfileType, setStatus, updateStatus} from '../../Redux/profileReducer';
+import ProfileInfo from '../Profile/ProfileInfo/ProfileInfo';
 
 
 type NavBartype = {
@@ -11,22 +13,26 @@ type NavBartype = {
 }
 
 
-
-
 const Navbar: React.FC<NavBartype> = (props) => {
 
     const status = useSelector<AppStateType, string>(state => state.profilePage.status)
+    const isFetching = useSelector<AppStateType, boolean>(state => state.profilePage.isFetching)
+    const profile = useSelector<AppStateType, ProfileType | null>(state => state.profilePage.profile)
+
 
 
     return (
         <nav className={s.nav}>
             <div>
-                <div className={s.itemImage}><img src="https://zamanilka.ru/wp-content/uploads/2023/06/ava-kotik-060623-1.jpg"
-                                                  alt="image"/></div>
-                {status}
+                <div className={s.itemImage}><img
+                    src="https://zamanilka.ru/wp-content/uploads/2023/06/ava-kotik-060623-1.jpg"
+                    alt="image"/></div>
+                <ProfileInfo profile={profile}
+                             isFetching={isFetching}
+                             status={status}
+                             updateStatus={updateStatus}
+                />
             </div>
-
-
             <div className={s.item}>
                 <NavLink to={'/profile'} activeClassName={s.activeLink}>Profile</NavLink>
             </div>
@@ -47,20 +53,6 @@ const Navbar: React.FC<NavBartype> = (props) => {
             </div>
             <div className={s.friends}>
                 <NavLink to={'/friends'} activeClassName={s.activeLink}>Friends</NavLink>
-                {/*<div className={s.friendsPersons}>*/}
-                {/*    <div>*/}
-                {/*        <div className={s.personsCircle}></div>*/}
-                {/*        <div className={s.friendsPerson}>{props.state.sidebar.friends[0].name}</div>*/}
-                {/*    </div>*/}
-                {/*    <div>*/}
-                {/*        <div className={s.personsCircle}></div>*/}
-                {/*        <div className={s.friendsPerson}>{props.state.sidebar.friends[1].name}</div>*/}
-                {/*    </div>*/}
-                {/*    <div>*/}
-                {/*        <div className={s.personsCircle}></div>*/}
-                {/*        <div className={s.friendsPerson}>{props.state.sidebar.friends[2].name}</div>*/}
-                {/*    </div>*/}
-                {/*</div>*/}
             </div>
         </nav>
     );

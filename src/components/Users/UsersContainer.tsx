@@ -34,7 +34,7 @@ class UsersAPIContainer extends React.Component<UsersPropsType> {
     render() {
         return (
             <>
-                <Preloader isFetching={this.props.isFetching}/>
+                <Preloader isFetching={this.props.isFetching} size={"small"}/>
                 <Users
                     totalItemsCount={this.props.totalItemsCount}
                     pageSize={this.props.pageSize}

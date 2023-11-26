@@ -16,7 +16,7 @@ type ProfileInfoType = {
 
 
 const ProfileInfo: React.FC<ProfileInfoType> = (props) => {
-
+// debugger
     if(!props.profile) {
         return (
             <Preloader isFetching={props.isFetching}/>
@@ -31,7 +31,8 @@ const ProfileInfo: React.FC<ProfileInfoType> = (props) => {
 
             <div className={s.descriptionBlock}>
                 {/*<img src={props.profile.photos.small} alt={"image"}/>*/}
-                {/*<ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus}/>*/}
+
+                <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus}/>
             </div>
         </div>
     );

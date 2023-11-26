@@ -2,15 +2,14 @@
 
 .descriptionBlock {
     padding: 10px;
-    position: absolute;
-    height: 50px;
-    left: 300px;
-    top: 350px;
+    /*position: absolute;*/
+    height: 20px;
+    /*left: 300px;*/
+    /*top: 350px;*/
 }
 
 .profileInfoMain {
     display: flex;
     position: relative;
-    border-radius: 5px 5px 0 0;
-    background-color: white;
+    background-color: #0389c9;
 }

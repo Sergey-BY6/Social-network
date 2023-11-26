@@ -1,12 +1,14 @@
-import {applyMiddleware, combineReducers, compose, createStore} from 'redux';
+import {AnyAction, applyMiddleware, combineReducers, compose, createStore} from 'redux';
 import {profileReducer} from './profileReducer';
 import {dialogsReducer} from './dialogsReducer';
 import {sidebarReducer} from './sidebarReducer';
 import {usersReducer} from './usersReducer';
 import {authReducer} from './auth-reducer';
-import thunkMiddleware from 'redux-thunk'
+import thunkMiddleware, {ThunkDispatch} from 'redux-thunk'
 import {reducer as formReducer} from 'redux-form'
 import {appReducer} from './app-reducer';
+import {useDispatch} from 'react-redux';
+import thunk from 'redux-thunk';
 
 
 export const rootReducer = combineReducers({
@@ -30,6 +32,9 @@ export const store = createStore(rootReducer, composeEnhancers(applyMiddleware(t
 
 
 export type AppStateType = ReturnType<typeof rootReducer>
+export type AppThunkDispatch = ThunkDispatch<AppStateType, any, AnyAction>
+
+export const useAppDispatch = () => useDispatch<AppThunkDispatch>();
 
 
 // @ts-ignore

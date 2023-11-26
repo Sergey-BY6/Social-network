@@ -1,5 +1,7 @@
 .mainMusic {
     background-color: white;
     border-radius: 5px;
-    min-height: 35vh;
+    height: 270px;
+    max-width: 800px;
+    padding: 10px;
 }

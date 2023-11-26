@@ -44,13 +44,11 @@ export const usersReducer = (state: InitialStateType = initialState, action: Mai
         case FOLLOW: {
             return {
                 ...state, users: updateObjectInArray(state.users, action.payload.userId, true)
-                // users: state.users.map(el => el.id === action.payload.userId ? {...el, followed: true} : el)
             }
         }
         case UNFOLLOW: {
             return {
                 ...state, users: updateObjectInArray(state.users, action.payload.userId, false)
-                // users: state.users.map(el => el.id === action.payload.userId ? {...el, followed: false} : el)
             }
         }
         case SET_USERS: {
@@ -166,28 +164,9 @@ export const getUsers = (page: number, pageSize: number) => async (dispatch: Dis
     const data = await usersAPI.getUsers(page, pageSize)
     dispatch(toggleIsFetching(false))
     dispatch(setUsers(data.items))
-    // dispatch(setTotalUsersCount(55))
     dispatch(setTotalUsersCount(data.totalCount))
 }
 
-
-// export const follow = (elId: number) => async (dispatch: Dispatch) => {
-//     dispatch(toggleFollowingInProgress(true, elId))
-//     const data = await usersAPI.follow(elId)
-//     if (data.resultCode === 0) {
-//         dispatch(followSuccess((elId)))
-//     }
-//     dispatch(toggleFollowingInProgress(false, elId))
-// }
-//
-// export const unFollow = (elId: number) => async (dispatch: Dispatch) => {
-//     dispatch(toggleFollowingInProgress(true, elId))
-//     const data = await usersAPI.unFollow(elId)
-//     if (data.resultCode === 0) {
-//         dispatch(unFollowSuccess((elId)))
-//     }
-//     dispatch(toggleFollowingInProgress(false, elId))
-// }
 
 type apiMethodType = {
     data: {}
