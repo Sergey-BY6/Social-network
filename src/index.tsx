@@ -1,13 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import SamuraiJSApp from './App';
+import SamuraiTSApp from './App';
+
 
 
 
 // export const rerenderEntireTree = () => {
     ReactDOM.render(
-               <SamuraiJSApp/>,
+               <SamuraiTSApp/>,
         document.getElementById('root')
     );
 // }
