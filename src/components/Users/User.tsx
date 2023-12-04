@@ -12,7 +12,6 @@ type UserPropsType = {
     followingInProgress: number []
 }
 
-
 export const User: React.FC<UserPropsType> = (props) => {
 
     let user = props.user

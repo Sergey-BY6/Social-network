@@ -1,6 +1,6 @@
 import './App.css';
 import Navbar from './components/Navbar/Navbar';
-import {BrowserRouter, HashRouter, Route, withRouter} from 'react-router-dom';
+import {BrowserRouter, HashRouter, Redirect, Route, withRouter} from 'react-router-dom';
 import News from './components/News/News';
 import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
@@ -16,6 +16,7 @@ import {initializeApp} from './Redux/app-reducer';
 import Preloader from './components/common/Preloader/Preloader';
 import {WithSuspense} from './hoc/withSuspense';
 import ProfileContainer from './components/Profile/ProfileContainer';
+import MyPostsContainer from '../src/components/Profile/MyPosts/MyPostsContainer';
 
 
 const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
@@ -51,6 +52,12 @@ class App extends React.Component<AppPropsType> {
                     <Route path={'/users'} render={() => <UsersContainer/>}/>
 
                     <Route path={'/login'} render={() => <Login/>}/>
+
+
+                    <Route path={'/'} render={() => <Redirect to={"/profile"}/>} />
+                    {/*<Route path={'/'} render={() => <ProfileContainer/>}/>*/}
+
+                    {/*<Route path={'/profile'} render={() => <MyPostsContainer/>} />*/}
 
                 </div>
             </div>

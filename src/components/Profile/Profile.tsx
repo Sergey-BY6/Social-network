@@ -1,28 +1,65 @@
-import React from 'react';
-import ProfileInfo from './ProfileInfo/ProfileInfo';
+import React, {useEffect} from 'react';
 import MyPostsContainer from './MyPosts/MyPostsContainer';
 import {ProfileType} from '../../Redux/profileReducer';
-import s from "./Profile.module.css"
-import {Redirect} from 'react-router-dom';
+import s from './Profile.module.css'
+import {useLocation} from 'react-router-dom';
+import {useSelector} from 'react-redux';
+import {AppStateType, useAppDispatch} from '../../Redux/redux-store';
+import {follow, getUsers, unFollow, UsersType} from '../../Redux/usersReducer';
+import {User} from '../Users/User';
 
 
 type ProfilePropsType = {
+    isOwner: boolean
     profile: ProfileType | null
     isFetching: boolean
     status: string
     updateStatus: (status: string) => void
+    savePhoto: (photoFile: File) => void
+
 }
 
 const Profile: React.FC<ProfilePropsType> = (props) => {
+    const dispatch = useAppDispatch()
+    let location = useLocation().pathname.split('/')[2]
+    const user = useSelector<AppStateType, UsersType>(state => state.usersPage.users.filter(el => el.id === +location)[0])
+    const followingInProgress = useSelector<AppStateType, number []>(state => state.usersPage.followingInProgress)
+    const currentPage = useSelector<AppStateType, number>(state => state.usersPage.currentPage)
+    const pageSize = useSelector<AppStateType, number>(state => state.usersPage.pageSize)
+
+    const followCb = (userId: number) => {
+        dispatch(follow(userId))
+    }
+
+    const onFollowCb = (userId: number) => {
+        dispatch(unFollow(userId))
+    }
+
+    useEffect(()=> {
+        dispatch(getUsers(currentPage, pageSize))
+    },[])
+
+    // if (user === undefined) {
+    //     // debugger
+    //     dispatch(getUsers(currentPage, pageSize))
+    // }
+
+
     return (
         <div className={s.profileMain}>
-            {/*<div><ProfileInfo profile={props.profile}*/}
-            {/*             isFetching={props.isFetching}*/}
-            {/*             status={props.status}*/}
-            {/*             updateStatus={props.updateStatus}*/}
-            {/*/></div>*/}
-            <MyPostsContainer/>
-
+            {props.isOwner ?
+                <MyPostsContainer/> :
+                // <div><ProfileInfo
+                //     isOwner={props.isOwner}
+                //     profile={props.profile}
+                //     isFetching={props.isFetching}
+                //     status={props.status}
+                //     updateStatus={props.updateStatus}
+                //     savePhoto={props.savePhoto}
+                // />
+                // </div>
+                user && <User user={user} follow={followCb} unfollow={onFollowCb} followingInProgress={followingInProgress}/>
+            }
         </div>
     );
 };

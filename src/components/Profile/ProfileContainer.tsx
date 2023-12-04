@@ -2,7 +2,14 @@ import React from 'react';
 import Profile from './Profile';
 import {connect} from 'react-redux';
 import {AppStateType} from '../../Redux/redux-store';
-import {getStatus, getUserProfile, ProfileType, toggleProfilePage, updateStatus} from '../../Redux/profileReducer';
+import {
+    getStatus,
+    getUserProfile,
+    ProfileType,
+    savePhoto,
+    toggleProfilePage,
+    updateStatus
+} from '../../Redux/profileReducer';
 import {Redirect, RouteComponentProps, withRouter} from 'react-router-dom';
 import {mapStateToPropsForRedirectType, withAuthRedirect} from '../../hoc/withAuthRedirect';
 import {compose} from 'redux';
@@ -13,19 +20,34 @@ import Dialogs from '../Dialogs/Dialogs';
 
 export class ProfileContainer extends React.Component<ProfilePropsType> {
 
-    componentDidMount() {
+
+    refreshProfile() {
         let userId = this.props.match.params.userId
         if (!userId) {
             // userId = "2"
             userId = `${this.props.authorizedUserId}`
-            if(!(+userId)) {
+            if (!(+userId)) {
                 this.props.history.push('/login')
             }
         }
-        //перенес в navbar
-        // this.props.toggleProfilePage(true)
-        // this.props.getUserProfile(userId)
-        // this.props.getStatus(userId)
+
+        if (+userId === 28096) {
+            //перенес в navbar
+            // this.props.toggleProfilePage(true)
+            this.props.getUserProfile(userId)
+            this.props.getStatus(userId)
+        }
+
+    }
+
+    componentDidMount() {
+        this.refreshProfile()
+    }
+
+    componentDidUpdate(prevProps: Readonly<ProfilePropsType>, prevState: Readonly<{}>, snapshot?: any) {
+        if (this.props.match.params.userId !== prevProps.match.params.userId) {
+            this.refreshProfile()
+        }
     }
 
 
@@ -33,10 +55,12 @@ export class ProfileContainer extends React.Component<ProfilePropsType> {
         return (
             <div>
                 <Profile {...this.props}
+                         isOwner={!this.props.match.params.userId}
                          profile={this.props.profile}
                          isFetching={this.props.isFetching}
                          status={this.props.status}
                          updateStatus={this.props.updateStatus}
+                         savePhoto={this.props.savePhoto}
                 />
             </div>
         );
@@ -63,6 +87,7 @@ type mapDispatchToPropsType = {
 
     getStatus: (userId: string) => void
     updateStatus: (status: string) => void
+    savePhoto: (photoFile: File) => void
 }
 
 
@@ -88,7 +113,8 @@ export default compose<React.ComponentType>(
         getUserProfile,
 
         getStatus,
-        updateStatus
+        updateStatus,
+        savePhoto
     }),
     withRouter,
     // withAuthRedirect

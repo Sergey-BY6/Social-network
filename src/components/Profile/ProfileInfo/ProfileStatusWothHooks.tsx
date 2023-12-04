@@ -1,7 +1,7 @@
 import React, {ChangeEvent, useEffect, useState} from 'react'
 import s from './ProfileInfo.module.css'
-import {useDispatch} from 'react-redux';
-import {useAppDispatch} from '../../../Redux/redux-store';
+import {useDispatch, useSelector} from 'react-redux';
+import {AppStateType, useAppDispatch} from '../../../Redux/redux-store';
 import {updateStatus} from '../../../Redux/profileReducer';
 
 type ProfileStatusType = {
@@ -34,14 +34,13 @@ const ProfileStatusWithHooks: React.FC<ProfileStatusType> = (props) => {
     }
 
     return (
-        <div>
+        <div className={s.editStatus}>
             {editMode ?
                 <div>
                     <input onChange={onChangeStatusHandler}
                            value={status}
                            onBlur={deactivateEditModeHandler}
                            autoFocus
-
                     />
                 </div>
                 :

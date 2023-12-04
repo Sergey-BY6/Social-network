@@ -34,16 +34,16 @@
     display: flex;
 }
 
-.nameStatusBlock {
-    display: flex;
-    flex-direction: column;
-}
+/*.nameStatusBlock {*/
+/*    display: flex;*/
+/*    !*flex-direction: column;*!*/
+/*}*/
 
-.itemImage img {
-    width: 60px;
-    height: 60px;
-    border-radius: 37px;
-}
+/*.itemImage img {*/
+/*    width: 60px;*/
+/*    height: 60px;*/
+/*    border-radius: 37px;*/
+/*}*/
 
 .name {
     margin: 3px 0 0 5px;

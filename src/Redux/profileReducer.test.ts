@@ -8,7 +8,9 @@ let state = {
     ] as postsType[],
     // newPostText: '',
     profile: null,
+    profile2: null,
     status: '',
+    status2: '',
     isFetching: false
 }
 
