@@ -1,7 +1,7 @@
 import React from 'react';
 import {Header} from './Header';
 import {connect} from 'react-redux';
-import {getAuthUserData, logout} from '../../Redux/auth-reducer';
+import {logout} from '../../Redux/auth-reducer';
 import {AppStateType} from '../../Redux/redux-store';
 
 
@@ -26,7 +26,6 @@ type mapStateToPropsType = {
 }
 
 type mapDispatchToPropsType = {
-    // getAuthUserData: () => void
     logout: () => void
 }
 

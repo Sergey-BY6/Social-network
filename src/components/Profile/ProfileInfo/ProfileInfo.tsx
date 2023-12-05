@@ -1,8 +1,7 @@
-import React, {ChangeEvent} from 'react';
+import React from 'react';
 import s from './ProfileInfo.module.css'
 import {ProfileType} from '../../../Redux/profileReducer';
 import Preloader from '../../common/Preloader/Preloader';
-import ProfileStatus from './ProfileStatus';
 import ProfileStatusWithHooks from './ProfileStatusWothHooks';
 import user from './../../../assets/images/user.jpg'
 import {InputFile} from './../../common/InputFile/InputFile';
@@ -32,12 +31,6 @@ const ProfileInfo: React.FC<ProfileInfoType> = ({
             <div className={s.preloadProfile}><Preloader isFetching={isFetching} size={'small'} margin={margin}/></div>
         )
     }
-    // const mainPhotoSelectedHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    //     if(e.target.files) {
-    //         props.savePhoto(e.target.files[0])
-    //     }
-    //
-    // }
 
     return (
         <div className={s.profileInfoMain}>

@@ -1,5 +1,3 @@
-
-
 export type SidebarFriendsType = {
     name: string
 }
@@ -15,9 +13,6 @@ let initialState = {
 export type InitialState = typeof initialState
 
 
-
 export const sidebarReducer = (state: InitialState = initialState, action: any): InitialState => {
-
-return state
-
+    return state
 }

@@ -6,7 +6,6 @@
 
 .usersPage {
     margin: 30px 0 0 0;
-    /*border: 1px solid red;*/
 }
 
 .user {
@@ -29,7 +28,6 @@
 .nameStatusUserMain {
     margin: 0 0 0 15px;
 }
-
 
 
 .nameUser {
@@ -86,7 +84,3 @@
     font-size: calc(14px + (16 - 14) * ((100vw - 320px) / (1920 - 320)));
     line-height: 1.2;
 }
-
-/*.selectPage {*/
-/*    font-weight: bold;*/
-/*}*/

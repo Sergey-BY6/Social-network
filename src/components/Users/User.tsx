@@ -46,10 +46,6 @@ export const User: React.FC<UserPropsType> = (props) => {
                     <div className={s.nameUser}>{user.name}</div>
                     <div className={s.statusUser}>{user.status}</div>
                 </span >
-                {/*<span>*/}
-                {/*    <div>{'el.location.country'}</div>*/}
-                {/*    <div>{'el.location.city'}</div>*/}
-                {/*</span>*/}
             </span>
         </div>
     )

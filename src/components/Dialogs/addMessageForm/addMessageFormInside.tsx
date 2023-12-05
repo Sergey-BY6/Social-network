@@ -1,7 +1,7 @@
 import {maxLengthCreator, required} from '../../../utils/validators/validators';
 import React from 'react';
 import {Field, InjectedFormProps, reduxForm} from 'redux-form';
-import {Textarea, TextareaInside} from '../../common/FormsControls/FormsControls';
+import { TextareaInside} from '../../common/FormsControls/FormsControls';
 import s from '../Dialogs.module.css';
 
 export type AddMessageFormType = {
@@ -19,9 +19,7 @@ const AddMessageFormInside: React.FC<InjectedFormProps<AddMessageFormType>> = (p
                        placeholder={'Enter your message'}
                        className={s.area}/>
             </div>
-            {/*<div>*/}
                 <button className={s.btnAdd}>send</button>
-            {/*</div>*/}
         </form>
     )
 }

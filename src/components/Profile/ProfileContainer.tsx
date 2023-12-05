@@ -1,6 +1,6 @@
 import React from 'react';
 import Profile from './Profile';
-import {connect, useSelector} from 'react-redux';
+import {connect} from 'react-redux';
 import {AppStateType} from '../../Redux/redux-store';
 import {
     getStatus,
@@ -10,13 +10,12 @@ import {
     toggleProfilePage,
     updateStatus
 } from '../../Redux/profileReducer';
-import {Redirect, RouteComponentProps, withRouter} from 'react-router-dom';
-import {mapStateToPropsForRedirectType, withAuthRedirect} from '../../hoc/withAuthRedirect';
+import {RouteComponentProps, withRouter} from 'react-router-dom';
+import {withAuthRedirect} from '../../hoc/withAuthRedirect';
 import {compose} from 'redux';
-import Dialogs from '../Dialogs/Dialogs';
 
 
-// type ProfilePropsType = {}
+
 
 export class ProfileContainer extends React.Component<ProfilePropsType> {
 
@@ -115,5 +114,5 @@ export default compose<React.ComponentType>(
         savePhoto
     }),
     withRouter,
-    // withAuthRedirect
+    withAuthRedirect
 )(ProfileContainer)

@@ -39,26 +39,11 @@ const Profile: React.FC<ProfilePropsType> = (props) => {
         dispatch(getUsers(currentPage, pageSize))
     },[])
 
-    // if (user === undefined) {
-    //     // debugger
-    //     dispatch(getUsers(currentPage, pageSize))
-    // }
-
-
 
     return (
         <div className={s.profileMain}>
             {props.isOwner ?
                 <MyPostsContainer/> :
-                // <div><ProfileInfo
-                //     isOwner={props.isOwner}
-                //     profile={props.profile}
-                //     isFetching={props.isFetching}
-                //     status={props.status}
-                //     updateStatus={props.updateStatus}
-                //     savePhoto={props.savePhoto}
-                // />
-                // </div>
                 user && <User user={user} follow={followCb} unfollow={onFollowCb} followingInProgress={followingInProgress}/>
             }
         </div>

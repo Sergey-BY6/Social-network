@@ -6,9 +6,6 @@
 }
 
 .header img {
-    /*width: 25px;*/
-    /*height: 25px;*/
-
 }
 
 .socialName {
@@ -32,7 +29,6 @@
     background-color: #0389c9;
     cursor: pointer;
     border: none;
-    /*margin: 0px 25px 0 0px;*/
     height: 60px;
     width: 85px;
     font-weight: 500;
@@ -49,10 +45,8 @@
 .logoutBlock {
     display: flex;
     align-items: center;
-    /*margin-left: 78vw;*/
     color: white;
     height: 60px;
-
 }
 
 
@@ -61,7 +55,6 @@
     font-family: "Roboto", "Segoe Ui";
     font-size: 16px;
     font-weight: 500;
-    /*line-height: 65px;*/
 }
 
 .button {

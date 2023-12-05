@@ -1,7 +1,6 @@
 import React, {ChangeEvent, useEffect, useState} from 'react'
 import s from './ProfileInfo.module.css'
-import {useDispatch, useSelector} from 'react-redux';
-import {AppStateType, useAppDispatch} from '../../../Redux/redux-store';
+import {useAppDispatch} from '../../../Redux/redux-store';
 import {updateStatus} from '../../../Redux/profileReducer';
 
 type ProfileStatusType = {
@@ -41,11 +40,13 @@ const ProfileStatusWithHooks: React.FC<ProfileStatusType> = (props) => {
                            value={status}
                            onBlur={deactivateEditModeHandler}
                            autoFocus
+                           className={s.input}
+                           maxLength={8}
                     />
                 </div>
                 :
                 <div>
-                    <span onDoubleClick={activateEditModeHandler}>{props.status ? props.status : '-----'}</span>
+                    <span onDoubleClick={activateEditModeHandler}>{props.status ? props.status : '$'}</span>
                 </div>}
         </div>
     );

@@ -1,23 +1,21 @@
 import React, {useEffect} from 'react';
-import {NavLink, useHistory, useLocation, useParams} from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 import s from './Navbar.module.css'
-import {useDispatch, useSelector} from 'react-redux';
+import {useSelector} from 'react-redux';
 import {AppStateType, useAppDispatch} from '../../Redux/redux-store';
-import ProfileStatusWithHooks from '../Profile/ProfileInfo/ProfileStatusWothHooks';
 import {
     getStatus,
     getUserProfile,
     ProfileType, savePhoto,
-    setStatus,
     toggleProfilePage,
     updateStatus
 } from '../../Redux/profileReducer';
 import ProfileInfo from '../Profile/ProfileInfo/ProfileInfo';
-import Preloader from '../common/Preloader/Preloader';
+
 
 
 type NavBartype = {
-    // state: AppStateType
+
 }
 
 
@@ -28,6 +26,7 @@ const Navbar: React.FC<NavBartype> = (props) => {
     const profile = useSelector<AppStateType, ProfileType | null>(state => state.profilePage.profile)
     const myId = useSelector<AppStateType, number | null>(state => state.auth.id)
     const isInitialized = useSelector<AppStateType, boolean | null>(state => state.app.initialized)
+    const isAuth = useSelector<AppStateType, boolean>(state => state.auth.isAuth)
 
 
 
@@ -44,7 +43,7 @@ const Navbar: React.FC<NavBartype> = (props) => {
     return (
         <nav className={s.nav}>
             <div className={s.nameStatusImageBlock}>
-                <ProfileInfo
+                {isAuth && <ProfileInfo
                     isOwner={true}
                     profile={profile}
                     isFetching={isFetching}
@@ -52,8 +51,8 @@ const Navbar: React.FC<NavBartype> = (props) => {
                     updateStatus={updateStatus}
                     margin={'5px'}
                     savePhoto={savePhoto}
-                />
-                <div className={s.name}>Sergey Babich</div>
+                />}
+                {isAuth ? <div className={s.name}>Sergey Babich</div> : <div className={s.name}></div>}
             </div>
             <div className={s.itemMainBlock}>
                 <div className={s.item}>
@@ -79,7 +78,6 @@ const Navbar: React.FC<NavBartype> = (props) => {
                 </div>
             </div>
         </nav>
-
     );
 };
 

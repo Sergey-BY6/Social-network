@@ -24,7 +24,6 @@ let initialState: InitialStateType = {
     captchaUrl: null
 }
 
-// export type InitialStateType = typeof initialState
 
 
 export const authReducer = (state: InitialStateType = initialState, action: MainType): InitialStateType => {
@@ -33,7 +32,6 @@ export const authReducer = (state: InitialStateType = initialState, action: Main
             return {
                 ...state,
                 ...action.payload.data,
-
             }
         }
         case GET_CAPTCHA_URL_SUCCESS: {
@@ -53,7 +51,7 @@ export type MainType = setUserDataType | stopSubmitType | getCaptchaUrlSuccessTy
 
 
 type setUserDataType = ReturnType<typeof setAuthUserData>
-export const setAuthUserData = (id: number | null, login: string | null, email: string | null, isAuth: boolean) => {
+export const setAuthUserData = (id: number | null, login: string | null, email: string | null, isAuth: boolean, captchaUrl?: string | null) => {
     return {
         type: SET_USER_DATA,
         payload: {
@@ -61,7 +59,8 @@ export const setAuthUserData = (id: number | null, login: string | null, email: 
                 id,
                 login,
                 email,
-                isAuth
+                isAuth,
+                captchaUrl
             }
         }
     } as const
@@ -83,7 +82,7 @@ export const getAuthUserData = () => async (dispatch: Dispatch) => {
     const response = await authAPI.me()
     if (response.data.resultCode === 0) {
         let {id, login, email} = response.data.data
-        dispatch(setAuthUserData(id, login, email, true))
+        dispatch(setAuthUserData(id, login, email, true, null))
     }
 }
 

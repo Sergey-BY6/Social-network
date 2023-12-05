@@ -5,15 +5,8 @@ import SamuraiTSApp from './App';
 
 
 
-
-// export const rerenderEntireTree = () => {
     ReactDOM.render(
                <SamuraiTSApp/>,
         document.getElementById('root')
     );
-// }
-
-
-// rerenderEntireTree()
-// store.subscribe(rerenderEntireTree)
 

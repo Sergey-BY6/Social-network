@@ -94,6 +94,6 @@ export const UsersContainer  = compose<React.ComponentType>(
         toggleFollowingInProgress,
         getUsers
     }),
-    // withAuthRedirect
+    withAuthRedirect
 )(UsersAPIContainer)
 

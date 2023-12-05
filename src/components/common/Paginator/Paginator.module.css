@@ -1,7 +1,6 @@
 .paginator {
-display: flex;
+    display: flex;
     height: 50px;
-    /*border: 1px solid green;*/
     margin: 0 0 0 15px;
 }
 .pages {
@@ -15,7 +14,6 @@ display: flex;
 .pageNumber {
     margin: 3px;
     padding: 4px;
-    /*border: 1px solid grey;*/
     cursor: pointer;
     color: #647589;
     text-transform: capitalize;
@@ -27,7 +25,6 @@ display: flex;
 .selectedPage {
     margin: 3px;
     padding: 4px;
-    /*border: 1px solid grey;*/
     cursor: pointer;
     color: #fa6342;
     text-transform: capitalize;
@@ -49,7 +46,6 @@ display: flex;
     cursor: pointer;
     overflow: visible;
     margin: 10px 0 5px 5px;
-
     color: rgba(255, 255, 255, 0.9);
     text-transform: capitalize;
     font-family: "Roboto", sans-serif;

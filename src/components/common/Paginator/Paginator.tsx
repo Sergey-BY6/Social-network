@@ -27,7 +27,6 @@ export const Paginator: React.FC<PaginatorPropsType> = (props) => {
     let rightPortionPageNumber = portionNumber * portionSize
 
 
-
     return (
             <div className={s.paginator}>
                 {portionNumber > 1 &&
@@ -36,8 +35,6 @@ export const Paginator: React.FC<PaginatorPropsType> = (props) => {
                     className={s.btn}
                 >Prev</button>
                 }
-
-
                 <div className={s.pages}>
                     {pages
                     .filter(p => p >= leftPortionPageNumber && p <= rightPortionPageNumber)

@@ -19,12 +19,15 @@
 }
 
 .formSummeryError {
-    border: 1px solid red;
+    border: none;
     font-weight: 600;
     padding: 5px;
     color: red;
-    width: 150px;
+    width: 202px;
+    position: relative;
+    top: -15px;
 }
+
 
 
 .createFieldMain {
@@ -71,6 +74,9 @@
     font-family: inherit;
     font-size: inherit;
     line-height: inherit;
-    position: absolute;
-    top: 288px;
+    position: relative;
+}
+
+
+.imgCaptcha {
 }

@@ -1,4 +1,4 @@
-import React, {ChangeEvent} from 'react';
+import React from 'react';
 import s from './MuPosts.module.css'
 import {MyPostsPropsType} from './MyPostsContainer';
 import Post from './Post/Post';
@@ -79,6 +79,7 @@ const AddNewPostFormInside: React.FC<InjectedFormProps<AddNewPostFormType>> = (p
                        name={'newPostText'}
                        validate={[required, maxLength10]}
                        className={s.area}
+
                 />
             </div>
             <div>

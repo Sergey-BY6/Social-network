@@ -1,8 +1,6 @@
-import {AnyAction, Dispatch} from 'redux';
-import {authAPI} from '../api/api';
+import {AnyAction} from 'redux';
 import {ThunkAction} from 'redux-thunk';
 import {AppStateType} from './redux-store';
-import {stopSubmit} from 'redux-form';
 import {getAuthUserData} from './auth-reducer';
 
 
@@ -16,7 +14,6 @@ let initialState: InitialStateType = {
     initialized: false
 }
 
-// export type InitialStateType = typeof initialState
 
 
 export const appReducer = (state: InitialStateType = initialState, action: MainType): InitialStateType => {

@@ -12,12 +12,6 @@ const instance = axios.create({
 
 
 export const usersAPI = {
-    // getUsers(currentPage: number = 1, pageSize: number = 10) {
-    //     return axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${currentPage}&count=${pageSize}`, {withCredentials: true})
-    //         .then(response => {
-    //             return response.data
-    //         })
-    // },
     getUsers(currentPage: number = 1, pageSize: number = 10) {
         return instance.get(`users?page=${currentPage}&count=${pageSize}`)
             .then(response => {
@@ -33,7 +27,6 @@ export const usersAPI = {
             .then(response => response.data)
     },
     getProfile (userId: string) {
-        // console.warn("Obsolete method. Please profileAPI object")
         return  profileAPI.getProfile(userId)
     }
 }

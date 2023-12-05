@@ -56,11 +56,8 @@ let initialState = {
         {id: 2, message: 'Hi, how are you?',  likesCount: 11, time: "one hours ago"},
         {id: 1, message: 'It\'s my first post', likesCount: 12, time: "two hours ago"},
     ] as postsType[],
-    // newPostText: '',
     profile: null as any,
-    // profile2: null as any,
     status: '',
-    // status2: '',
     isFetching: false
 }
 
@@ -79,27 +76,12 @@ export const profileReducer = (state: InitialStateType = initialState, action: M
         }
         case SET_USER_PROFILE: {
             return {...state, profile: action.payload.profile}
-            // debugger
-            // if(action.payload.profile.userId === 28096) {
-            //     return {...state, profile: action.payload.profile}
-            // }
-            // else {
-            //     return {...state, profile: action.payload.profile}
-            // }
         }
         case TOGGLE_PROFILE_PAGE: {
             return {...state, isFetching: action.payload.isFetching}
         }
         case SET_STATUS: {
             return {...state, status: action.payload.status}
-            // return {
-            //     ...state, status: action.payload.status
-            // }
-            // if (action.payload.userId === 28096 || action.payload.userId === "28096") {
-            //     return {...state, status: action.payload.status}
-            // } else {
-            //     return {...state, status: action.payload.status}
-            // }
         }
         case DELETE_POST: {
             return {
@@ -154,16 +136,6 @@ export const setStatus = (status: string, userId?: string) => {
     } as const
 }
 
-// export type setStatus2Type = ReturnType<typeof setStatus2>
-// export const setStatus2 = (status: string, userId?: string) => {
-//     return {
-//         type: SET_STATUS,
-//         payload: {
-//             status: status,
-//             userId: 28096
-//         }
-//     } as const
-// }
 
 export type deletePostType = ReturnType<typeof deletePost>
 export const deletePost = (postId: number) => {
@@ -174,7 +146,6 @@ export const deletePost = (postId: number) => {
         }
     } as const
 }
-
 
 
 export type savePhotoSuccessType = ReturnType<typeof savePhotoSuccess>
@@ -205,13 +176,6 @@ export const updateStatus = (status: string) => async (dispatch: Dispatch) => {
         dispatch(setStatus(status))
     }
 }
-
-// export const updateStatus2 = (status: string) => async (dispatch: Dispatch) => {
-//     const response = await profileAPI.updateStatus(status)
-//     if (response.data.resultCode === 0) {
-//         dispatch(setStatus(status))
-//     }
-// }
 
 
 export const savePhoto = (file: File) => async (dispatch: Dispatch) => {

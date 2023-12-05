@@ -24,7 +24,7 @@ export const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
             {createField('Password', 'password', [required], Input)}
             {createField(null,'rememberMe', [], Input, {type: "checkbox"}, "rememberMe")}
 
-            {captchaUrl && <img src={captchaUrl}/>}
+            {captchaUrl && <img src={captchaUrl} className={s.imgCaptcha}/>}
             {captchaUrl && createField("Symbols from image",'captcha', [required], Input, {})}
 
 
@@ -49,7 +49,6 @@ const LoginReduxForm = reduxForm<FormDataType>({form: 'login'})(LoginForm)
 type MapStateToPropsType = {
     isAuth: boolean
     captchaUrl: string | null
-    // login: string | null
 }
 
 type MapDispatchPropsType = {
@@ -62,7 +61,6 @@ const mapStateToProps = (state: AppStateType): MapStateToPropsType => {
     return {
         isAuth: state.auth.isAuth,
         captchaUrl: state.auth.captchaUrl
-        // login: state.auth.login
     }
 }
 
@@ -70,7 +68,6 @@ const mapStateToProps = (state: AppStateType): MapStateToPropsType => {
 const Login: React.FC<LoginPropsType> = (props) => {
 
     const onSubmit = (formData: FormDataType) => {
-        // console.log(formData)
         props.login(formData.email, formData.password, formData.rememberMe, formData.captcha)
     }
 

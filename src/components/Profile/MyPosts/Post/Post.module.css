@@ -1,8 +1,6 @@
-
 .itemMain {
     background-color: #edf7fb;
     height: 50px;
-    /*color: red;*/
 }
 
 .item {
@@ -24,7 +22,6 @@
     width: 50px;
     height: 50px;
     border-radius: 37px;
-
     top: 12px;
     left: 12px;
 }
@@ -45,7 +42,6 @@
     position: absolute;
     top: 38px;
     left: 87px;
-    /*text-transform: capitalize;*/
     color: #647589;
     font-weight: 500;
     font-family: "Roboto", sans-serif;
@@ -64,9 +60,7 @@
     margin-top: 10px;
     font-family: "Roboto", sans-serif;
     font-weight: 400;
-    /*margin: 0;*/
     line-height: 1.4;
-
 }
 
 .itemLike {

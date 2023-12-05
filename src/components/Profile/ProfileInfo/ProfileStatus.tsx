@@ -1,5 +1,5 @@
 import React, {ChangeEvent} from 'react'
-import s from './ProfileInfo.module.css'
+
 
 type ProfileStatusType = {
     status: string

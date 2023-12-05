@@ -14,7 +14,6 @@ type UsersPropsType = {
     follow: (userId: number) => void
     unfollow: (userId: number) => void
     followingInProgress: number []
-
 }
 
 
