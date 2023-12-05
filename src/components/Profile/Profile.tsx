@@ -45,6 +45,7 @@ const Profile: React.FC<ProfilePropsType> = (props) => {
     // }
 
 
+
     return (
         <div className={s.profileMain}>
             {props.isOwner ?

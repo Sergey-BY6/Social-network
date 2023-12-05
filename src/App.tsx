@@ -10,7 +10,7 @@ import {UsersContainer} from './components/Users/UsersContainer';
 import {HeaderContainer} from './components/Header/HeaderContainer';
 import Login from './components/Login/Login';
 import React from 'react';
-import {connect, Provider} from 'react-redux';
+import {connect, Provider, useSelector} from 'react-redux';
 import {compose} from 'redux';
 import {initializeApp} from './Redux/app-reducer';
 import Preloader from './components/common/Preloader/Preloader';
@@ -35,6 +35,7 @@ class App extends React.Component<AppPropsType> {
         if(!this.props.initialized) {
             return <Preloader isFetching={true}/>
         }
+
         return (
             <div className="app-wrapper">
                 <HeaderContainer/>

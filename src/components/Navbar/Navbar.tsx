@@ -26,10 +26,9 @@ const Navbar: React.FC<NavBartype> = (props) => {
     const status = useSelector<AppStateType, string>(state => state.profilePage.status)
     const isFetching = useSelector<AppStateType, boolean>(state => state.profilePage.isFetching)
     const profile = useSelector<AppStateType, ProfileType | null>(state => state.profilePage.profile)
-
-
     const myId = useSelector<AppStateType, number | null>(state => state.auth.id)
     const isInitialized = useSelector<AppStateType, boolean | null>(state => state.app.initialized)
+
 
 
     const dispatch = useAppDispatch()

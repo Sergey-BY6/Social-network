@@ -1,6 +1,6 @@
 import React from 'react';
 import Profile from './Profile';
-import {connect} from 'react-redux';
+import {connect, useSelector} from 'react-redux';
 import {AppStateType} from '../../Redux/redux-store';
 import {
     getStatus,
@@ -19,7 +19,6 @@ import Dialogs from '../Dialogs/Dialogs';
 // type ProfilePropsType = {}
 
 export class ProfileContainer extends React.Component<ProfilePropsType> {
-
 
     refreshProfile() {
         let userId = this.props.match.params.userId
@@ -49,7 +48,6 @@ export class ProfileContainer extends React.Component<ProfilePropsType> {
             this.refreshProfile()
         }
     }
-
 
     render() {
         return (

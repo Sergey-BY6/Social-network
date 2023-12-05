@@ -19,13 +19,19 @@ type ProfileInfoType = {
 }
 
 
-const ProfileInfo: React.FC<ProfileInfoType> = (props) => {
-    if (!props.profile) {
+const ProfileInfo: React.FC<ProfileInfoType> = ({
+                                                    profile,
+                                                    updateStatus,
+                                                    isOwner,
+                                                    isFetching,
+                                                    margin,
+                                                    status
+                                                }: ProfileInfoType) => {
+    if (!profile) {
         return (
-            <div className={s.preloadProfile}><Preloader isFetching={props.isFetching} size={'small'} margin={props.margin}/></div>
+            <div className={s.preloadProfile}><Preloader isFetching={isFetching} size={'small'} margin={margin}/></div>
         )
     }
-
     // const mainPhotoSelectedHandler = (e: ChangeEvent<HTMLInputElement>) => {
     //     if(e.target.files) {
     //         props.savePhoto(e.target.files[0])
@@ -36,20 +42,13 @@ const ProfileInfo: React.FC<ProfileInfoType> = (props) => {
     return (
         <div className={s.profileInfoMain}>
             <div className={s.descriptionBlock}>
-                <img src={props.profile.photos.small || user} alt={'image'} className={s.mainFhoto}/>
-                {props.isOwner
-                    ? <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus}/>
-                    : <div><span >{props.status ? props.status : '-----'}</span></div>
-                }
-                {/*{props.isOwner && <input*/}
-                {/*    type={'file'}*/}
-                {/*    onChange={mainPhotoSelectedHandler}*/}
-                {/*    className={s.changeFoto}>*/}
-                {/*</input>}*/}
-                <div className={s.changeFoto}>{props.isOwner && <InputFile></InputFile>}</div>
+                <img src={profile.photos.small || user} alt={'image'} className={s.mainFhoto}/>
+                <ProfileStatusWithHooks status={status} updateStatus={updateStatus}/>
+                <div className={s.changeFoto}>{isOwner && <InputFile></InputFile>}</div>
             </div>
         </div>
     );
 };
 
 export default ProfileInfo;
+

@@ -42,6 +42,7 @@ export type ProfileType = {
 }
 
 
+
 const ADD_POST = 'ADD-POST'
 const SET_USER_PROFILE = 'SET_USER_PROFILE'
 const TOGGLE_PROFILE_PAGE = 'TOGGLE_PROFILE_PAGE'
